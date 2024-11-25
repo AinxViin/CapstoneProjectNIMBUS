@@ -15,15 +15,16 @@ class UserRepository private constructor(
     private val userPreference: UserPreference
 ) {
 
-    suspend fun register(name: String, email: String, password: String): RegisterResponse {
-        return try {
-            apiService.register(name, email, password)
-        } catch (e: HttpException) {
-            val errorBody = e.response()?.errorBody()?.string()
-            val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
-            throw Exception(errorResponse.message)
-        }
+    suspend fun register(
+        nama: String,
+        username: String,
+        email: String,
+        password: String,
+        password_confirm: String
+    ): RegisterResponse {
+        return apiService.register(nama, username, email, password, password_confirm)
     }
+
 
     suspend fun login(email: String, password: String): LoginResponse {
         return try {

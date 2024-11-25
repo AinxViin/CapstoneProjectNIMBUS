@@ -41,9 +41,9 @@ class RegisterActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
+
         binding.passwordEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s != null && s.length < 8) {
@@ -53,27 +53,49 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
 
-            override fun afterTextChanged(s: Editable?) {
-            }
+            override fun afterTextChanged(s: Editable?) {}
         })
     }
 
     private fun setupAction() {
         binding.signupButton.setOnClickListener {
-            Toast.makeText(this, "Mohon Tunggu, Pendaftaran di proses..", Toast.LENGTH_SHORT).show()
-            val name = binding.nameEditText.text.toString()
+            Toast.makeText(this, "Pendaftaran diproses, mohon tunggu....", Toast.LENGTH_SHORT).show()
+            val nama = binding.nameEditText.text.toString()
+            val username = binding.usernameEditText.text.toString()
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
+            val password_confirm = binding.confirmpasswordEditText.text.toString()
 
-            viewModel.register(name, email, password) { success, _ ->
-                if (success) {
-                    Toast.makeText(this, "Daftar Berhasil", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, LoginActivity::class.java))
-                    finish()
-                } else {
-                    Toast.makeText(this, "Gagal dikirim", Toast.LENGTH_SHORT).show()
+            when {
+                nama.isEmpty() -> binding.nameEditText.error = "Nama tidak boleh kosong"
+                username.isEmpty() -> binding.usernameEditText.error = "Username tidak boleh kosong"
+                !isEmailValid(email) -> binding.emailEditText.error = "Email tidak valid"
+                password.length < 8 -> binding.passwordEditText.error = "Password minimal 8 karakter"
+                password_confirm != password -> binding.confirmpasswordEditText.error = "Password tidak cocok"
+                else -> {
+                    viewModel.register(nama, username, email, password, password_confirm) { success, message ->
+                        if (success) {
+                            Toast.makeText(this, "Berhasil dikirim", Toast.LENGTH_SHORT).show()
+                            navigateToLogin()
+                            finish()
+                        } else {
+                            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             }
         }
+    }
+
+    private fun isEmailValid(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    private fun navigateToLogin() {
+        val intent = Intent(this, LoginActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        startActivity(intent)
+        finish()
     }
 }
