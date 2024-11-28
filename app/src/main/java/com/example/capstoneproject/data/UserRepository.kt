@@ -9,7 +9,6 @@ import com.example.capstoneproject.response.LoginResponse
 import com.example.capstoneproject.response.RegisterResponse
 import com.example.capstoneproject.retrofit.ApiService
 import com.google.gson.Gson
-import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
 
 class UserRepository private constructor(
