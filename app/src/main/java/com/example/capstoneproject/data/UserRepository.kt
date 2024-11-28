@@ -32,19 +32,10 @@ class UserRepository private constructor(
         }
     }
 
-
-    fun getSession(): Flow<UserModel> {
-        return userPreference.getSession()
-    }
-
     suspend fun saveSession(user: UserModel) {
         userPreference.saveSessions(user)
     }
 
-
-    suspend fun logout() {
-        userPreference.logout()
-    }
 
     companion object {
         @Volatile
