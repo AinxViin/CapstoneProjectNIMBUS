@@ -2,6 +2,8 @@ package com.example.capstoneproject.data
 
 import com.example.capstoneproject.data.pref.UserModel
 import com.example.capstoneproject.data.pref.UserPreference
+import com.example.capstoneproject.request.LoginRequest
+import com.example.capstoneproject.request.RegisterRequest
 import com.example.capstoneproject.response.ErrorResponse
 import com.example.capstoneproject.response.LoginResponse
 import com.example.capstoneproject.response.RegisterResponse
@@ -15,20 +17,14 @@ class UserRepository private constructor(
     private val userPreference: UserPreference
 ) {
 
-    suspend fun register(
-        nama: String,
-        username: String,
-        email: String,
-        password: String,
-        password_confirm: String
-    ): RegisterResponse {
-        return apiService.register(nama, username, email, password, password_confirm)
+    suspend fun register(registerRequest: RegisterRequest): RegisterResponse {
+        return apiService.register(registerRequest)
     }
 
 
-    suspend fun login(email: String, password: String): LoginResponse {
+    suspend fun login(loginRequest: LoginRequest): LoginResponse {
         return try {
-            apiService.login(email, password)
+            apiService.login(loginRequest)
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)

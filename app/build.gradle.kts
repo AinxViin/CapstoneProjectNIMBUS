@@ -53,6 +53,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+
     //retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson)
@@ -62,5 +65,6 @@ dependencies {
     implementation(libs.datastore.core)
     implementation (libs.androidx.datastore)
     implementation(libs.kotlinx.coroutines.android)
+
 
 }

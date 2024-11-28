@@ -1,26 +1,16 @@
 package com.example.capstoneproject.retrofit
 
+import com.example.capstoneproject.request.LoginRequest
+import com.example.capstoneproject.request.RegisterRequest
 import com.example.capstoneproject.response.LoginResponse
 import com.example.capstoneproject.response.RegisterResponse
+import retrofit2.http.Body
 import retrofit2.http.POST
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
 
 interface ApiService {
-    @FormUrlEncoded
-    @POST("register")
-    suspend fun register(
-        @Field("nama") nama: String,
-        @Field("username") username: String,
-        @Field("email") email: String,
-        @Field("password") password: String,
-        @Field("password_confirm") password_confirm: String
-    ) : RegisterResponse
+    @POST("api/register")
+    suspend fun register(@Body registerRequest: RegisterRequest): RegisterResponse
 
-    @FormUrlEncoded
-    @POST("login")
-    suspend fun login(
-        @Field("email") email: String,
-        @Field("password") password: String
-    ) : LoginResponse
+    @POST("api/login")
+    suspend fun login(@Body loginRequest: LoginRequest): LoginResponse
 }

@@ -3,6 +3,8 @@ package com.example.capstoneproject.ui.register
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.capstoneproject.data.UserRepository
+import com.example.capstoneproject.request.RegisterRequest
+import com.example.capstoneproject.response.RegisterResponse
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(private val userRepository: UserRepository) : ViewModel() {
@@ -13,14 +15,21 @@ class RegisterViewModel(private val userRepository: UserRepository) : ViewModel(
         email: String,
         password: String,
         password_confirm: String,
-        onResult: (Boolean, String) -> Unit
+        callback: (Boolean, String) -> Unit
     ) {
         viewModelScope.launch {
             try {
-                val response = userRepository.register(nama, username, email, password, password_confirm)
-                onResult(true, "Pendaftaran berhasil! ID pengguna: ${response.id}")
+                val registerRequest = RegisterRequest(nama, username, email, password, password_confirm)
+
+                val response: RegisterResponse = userRepository.register(registerRequest)
+
+                if (response.id > 0) {
+                    callback(true, "Registrasi berhasil")
+                } else {
+                    callback(false, "Registrasi gagal")
+                }
             } catch (e: Exception) {
-                onResult(false, e.message ?: "Pendaftaran gagal, silakan coba lagi.")
+                callback(false, e.message ?: "Terjadi kesalahan")
             }
         }
     }

@@ -3,6 +3,8 @@ package com.example.capstoneproject.response
 import com.google.gson.annotations.SerializedName
 
 data class RegisterResponse(
+    val error: Boolean,
+    val message: String,
     @SerializedName("id") val id: Int,
     @SerializedName("nama") val nama: String,
     @SerializedName("username") val username: String,

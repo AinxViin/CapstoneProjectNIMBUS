@@ -77,7 +77,6 @@ class RegisterActivity : AppCompatActivity() {
                         if (success) {
                             Toast.makeText(this, "Berhasil dikirim", Toast.LENGTH_SHORT).show()
                             navigateToLogin()
-                            finish()
                         } else {
                             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                         }

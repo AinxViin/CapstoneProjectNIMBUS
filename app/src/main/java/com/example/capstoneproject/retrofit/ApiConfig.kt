@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    private const val BASE_URL = "https://nimbus-dev-374190138836.asia-southeast2.run.app/api/"
+    private const val BASE_URL = "https://nimbus-dev-374190138836.asia-southeast2.run.app/"
 
     val apiService: ApiService by lazy {
         Retrofit.Builder()
