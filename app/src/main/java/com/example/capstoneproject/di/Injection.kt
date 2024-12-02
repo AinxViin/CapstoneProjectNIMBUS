@@ -5,11 +5,17 @@ import com.example.capstoneproject.data.UserRepository
 import com.example.capstoneproject.data.pref.UserPreference
 import com.example.capstoneproject.data.pref.dataStore
 import com.example.capstoneproject.retrofit.ApiConfig
+import com.example.capstoneproject.ui.home.HomeViewModelFactory
 
 object Injection {
     fun provideRepository(context: Context): UserRepository {
         val pref = UserPreference.getInstance(context.dataStore)
         val apiService = ApiConfig.apiService(pref)
         return UserRepository.getInstance(apiService, pref)
+    }
+
+    fun provideViewModelFactory(context: Context): HomeViewModelFactory {
+        val userRepository = provideRepository(context)  // Menggunakan UserRepository yang sudah ada
+        return HomeViewModelFactory(userRepository)
     }
 }

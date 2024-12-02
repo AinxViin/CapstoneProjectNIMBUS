@@ -12,16 +12,16 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.capstoneproject.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_automatic"
+        android:name="com.example.capstoneproject.ui.automatic.AutomaticFragment"
+        android:label="@string/title_automatic"
+        tools:layout="@layout/fragment_automatic" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.capstoneproject.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_plan"
+        android:name="com.example.capstoneproject.ui.plan.PlanFragment"
+        android:label="@string/title_plan"
+        tools:layout="@layout/fragment_plan" />
 
     <fragment
         android:id="@+id/navigation_profile"

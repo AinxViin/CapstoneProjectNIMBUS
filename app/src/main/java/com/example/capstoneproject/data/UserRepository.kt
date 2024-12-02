@@ -7,13 +7,16 @@ import com.example.capstoneproject.request.RegisterRequest
 import com.example.capstoneproject.request.UpdateRequest
 import com.example.capstoneproject.response.ErrorResponse
 import com.example.capstoneproject.response.LoginResponse
+import com.example.capstoneproject.response.ProvinceResponse
 import com.example.capstoneproject.response.RegisterResponse
 import com.example.capstoneproject.response.UpdateResponse
 import com.example.capstoneproject.response.UserResponse
 import com.example.capstoneproject.retrofit.ApiService
 import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 
 class UserRepository private constructor(
@@ -61,6 +64,13 @@ class UserRepository private constructor(
 
     suspend fun saveSession(user: UserModel) {
         userPreference.saveSessions(user)
+    }
+
+    suspend fun getProvinces(): List<ProvinceResponse> {
+        return withContext(Dispatchers.IO) {
+            val response = apiService.getProvinces()
+            response // Assuming `getProvinces` returns a list of ProvinceResponse
+        }
     }
 
 

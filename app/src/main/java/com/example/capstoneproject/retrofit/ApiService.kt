@@ -4,6 +4,7 @@ import com.example.capstoneproject.request.LoginRequest
 import com.example.capstoneproject.request.RegisterRequest
 import com.example.capstoneproject.request.UpdateRequest
 import com.example.capstoneproject.response.LoginResponse
+import com.example.capstoneproject.response.ProvinceResponse
 import com.example.capstoneproject.response.RegisterResponse
 import com.example.capstoneproject.response.UpdateResponse
 import com.example.capstoneproject.response.UserResponse
@@ -27,4 +28,8 @@ interface ApiService {
 
     @GET("api/user")
     suspend fun getData(): UserResponse
+
+    @GET("api/user/provinsi")
+    suspend fun getProvinces(): List<ProvinceResponse>
+
 }
