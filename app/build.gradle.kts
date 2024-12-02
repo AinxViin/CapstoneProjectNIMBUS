@@ -56,6 +56,10 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
 
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+    implementation (libs.circleimageview)
+
     //retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson)

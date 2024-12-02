@@ -14,18 +14,40 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
             try {
                 val loginRequest = LoginRequest(email, password)
 
-                val response = userRepository.login(loginRequest)
+                // Perform login
+                val loginResponse = userRepository.login(loginRequest)
 
-                val userModel = UserModel(
-                    email = email,
-                    token = "temporary_token",
-                    isLogin = true
-                )
-                userRepository.saveSession(userModel)
-                onResult(true, response.message)
+                // Fetch user details after successful login
+                val userDetails = fetchUserDetails(password)
+
+                // Save user session
+                userRepository.saveSession(userDetails)
+
+                // Notify success
+                onResult(true, loginResponse.message)
             } catch (e: Exception) {
+                // Notify failure
                 onResult(false, e.message ?: "Login failed")
             }
         }
     }
+
+    private suspend fun fetchUserDetails(password: String): UserModel {
+        return try {
+            val response = userRepository.getUser()
+
+            // Construct user model from API response
+            UserModel(
+                email = response.email ?: "",
+                name = response.nama ?: "",
+                password = password,
+                profile = response.profilePic ?: "",
+                isLogin = true
+            )
+        } catch (e: Exception) {
+            // Log or handle the error as needed
+            throw Exception("Failed to fetch user details: ${e.message}", e)
+        }
+    }
+
 }

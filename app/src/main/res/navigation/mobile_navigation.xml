@@ -28,4 +28,22 @@
         android:name="com.example.capstoneproject.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_change_name"
+        android:name="com.example.capstoneproject.ui.profile.ChangeNameFragment"
+        android:label="@string/change_name"
+        tools:layout="@layout/fragment_change_name" />
+
+    <fragment
+        android:id="@+id/navigation_change_email"
+        android:name="com.example.capstoneproject.ui.profile.ChangeEmailFragment"
+        android:label="@string/change_email"
+        tools:layout="@layout/fragment_change_email" />
+
+    <fragment
+        android:id="@+id/navigation_change_password"
+        android:name="com.example.capstoneproject.ui.profile.ChangePasswordFragment"
+        android:label="@string/change_email"
+        tools:layout="@layout/fragment_change_email" />
 </navigation>
