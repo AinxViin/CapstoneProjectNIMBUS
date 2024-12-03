@@ -39,6 +39,7 @@ class ProvinceAdapter : RecyclerView.Adapter<ProvinceAdapter.ProvinceViewHolder>
             nameTextView.text = province.nama
             Glide.with(itemView.context)
                 .load(province.thumbnail)
+                .placeholder(R.drawable.placeholder)
                 .into(thumbnailImageView)
         }
     }

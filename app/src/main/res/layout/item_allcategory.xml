@@ -8,8 +8,8 @@
 
     <!-- Image Section -->
     <FrameLayout
-        android:layout_width="261dp"
-        android:layout_height="176dp"
+        android:layout_width="350dp"
+        android:layout_height="208dp"
         android:layout_gravity="center">
 
         <ImageView
@@ -33,12 +33,28 @@
             android:contentDescription="Favorite Icon"/>
     </FrameLayout>
 
-    <!-- Text Section -->
     <TextView
-        android:id="@+id/tvCategoryTitle"
+        android:id="@+id/tvReview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textSize="20sp"
         android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/tvCategoryTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="30sp"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/tvProvinceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp"
+        android:textColor="#000000"/>
+
 </LinearLayout>

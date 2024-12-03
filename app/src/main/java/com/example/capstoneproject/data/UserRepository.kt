@@ -11,6 +11,7 @@ import com.example.capstoneproject.response.ProvinceResponse
 import com.example.capstoneproject.response.RegisterResponse
 import com.example.capstoneproject.response.UpdateResponse
 import com.example.capstoneproject.response.UserResponse
+import com.example.capstoneproject.response.WisataResponse
 import com.example.capstoneproject.retrofit.ApiService
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
@@ -72,6 +73,9 @@ class UserRepository private constructor(
         }
     }
 
+    suspend fun getWisata(): List<WisataResponse> {
+        return apiService.getWisata(categoryId = 1) + apiService.getWisata(categoryId = 2)
+    }
 
     companion object {
         @Volatile

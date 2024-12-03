@@ -9,7 +9,14 @@
         android:id="@+id/navigation_home"
         android:name="com.example.capstoneproject.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_allAlamFragment"
+            app:destination="@id/allAlamFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allSeniFragment"
+            app:destination="@id/allSeniFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_automatic"
@@ -46,4 +53,15 @@
         android:name="com.example.capstoneproject.ui.profile.ChangePasswordFragment"
         android:label="@string/change_email"
         tools:layout="@layout/fragment_change_email" />
+
+    <fragment
+        android:id="@+id/allAlamFragment"
+        android:name="com.example.capstoneproject.ui.home.AllAlamFragment"
+        android:label="All Alam" />
+
+    <fragment
+        android:id="@+id/allSeniFragment"
+        android:name="com.example.capstoneproject.ui.home.AllSeniFragment"
+        android:label="All Seni" />
+
 </navigation>

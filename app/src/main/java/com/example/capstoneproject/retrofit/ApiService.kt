@@ -8,10 +8,13 @@ import com.example.capstoneproject.response.ProvinceResponse
 import com.example.capstoneproject.response.RegisterResponse
 import com.example.capstoneproject.response.UpdateResponse
 import com.example.capstoneproject.response.UserResponse
+import com.example.capstoneproject.response.WisataResponse
+import okhttp3.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Query
 
 interface ApiService {
     @POST("api/register")
@@ -31,4 +34,8 @@ interface ApiService {
     @GET("api/user/provinsi")
     suspend fun getProvinces(): List<ProvinceResponse>
 
+    @GET("api/user/tempat-wisata?page=44")
+    suspend fun getWisata(
+        @Query("category_id") categoryId: Int
+    ): List<WisataResponse>
 }
