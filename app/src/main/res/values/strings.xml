@@ -29,5 +29,8 @@
     <string name="change_name">Ganti Nama</string>
     <string name="change_email">Ganti Email</string>
 
+    <string name="wisata">Wisata</string>
+    <string name="lokasi">Lokasi</string>
+
 
 </resources>

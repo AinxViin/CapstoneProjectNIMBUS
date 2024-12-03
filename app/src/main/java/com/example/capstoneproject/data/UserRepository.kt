@@ -14,7 +14,6 @@ import com.example.capstoneproject.response.UserResponse
 import com.example.capstoneproject.retrofit.ApiService
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException

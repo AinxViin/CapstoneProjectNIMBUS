@@ -1,0 +1,55 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="#FFFFFF">
+
+    <!-- Image Section -->
+    <FrameLayout
+        android:layout_width="261dp"
+        android:layout_height="176dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/ivCategoryImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:contentDescription="Category Image"
+            android:src="@drawable/placeholder"/>
+
+        <!-- Bookmark Icon -->
+        <ImageView
+            android:id="@+id/ivBookmarkIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="8dp"
+            android:background="@drawable/rounded_background"
+            android:padding="8dp"
+            android:src="@drawable/unfav"
+            android:contentDescription="Favorite Icon"/>
+    </FrameLayout>
+
+    <!-- Text Section -->
+    <TextView
+        android:id="@+id/tvCategoryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:text="@string/wisata"/>
+
+    <TextView
+        android:id="@+id/tvCategorySubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:text="@string/lokasi"/>
+</LinearLayout>

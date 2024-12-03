@@ -70,5 +70,8 @@ dependencies {
     implementation (libs.androidx.datastore)
     implementation(libs.kotlinx.coroutines.android)
 
+    //shape
+    implementation (libs.material)
+
 
 }
