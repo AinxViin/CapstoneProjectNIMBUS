@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_allSeniFragment"
             app:destination="@id/allSeniFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allHiburanFragment"
+            app:destination="@+id/allHiburanFragment"/>
     </fragment>
 
     <fragment
@@ -63,5 +66,12 @@
         android:id="@+id/allSeniFragment"
         android:name="com.example.capstoneproject.ui.home.AllSeniFragment"
         android:label="All Seni" />
+
+    <fragment
+        android:id="@+id/allHiburanFragment"
+        android:name="com.example.capstoneproject.ui.home.AllHiburanFragment"
+        android:label="All Hiburan"/>
+
+
 
 </navigation>

@@ -73,8 +73,22 @@ class UserRepository private constructor(
         }
     }
 
-    suspend fun getWisata(): List<WisataResponse> {
-        return apiService.getWisata(categoryId = 1) + apiService.getWisata(categoryId = 2)
+    suspend fun getWisata(): List<WisataResponse> = withContext(Dispatchers.IO) {
+        val allWisata = mutableListOf<WisataResponse>()
+        val totalPages = 93
+
+        try {
+            for (page in 1..totalPages) {
+                val pageData = apiService.getWisata(categoryId = 1, page = page)
+                allWisata.addAll(pageData)
+
+                if (pageData.isEmpty()) break
+            }
+        } catch (e: Exception) {
+            throw Exception("Failed to fetch wisata data: ${e.message}")
+        }
+
+        return@withContext allWisata
     }
 
     companion object {

@@ -23,6 +23,10 @@ class HomeViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val _wisataBudaya = MutableLiveData<List<WisataResponse>>()
     val wisataBudaya: LiveData<List<WisataResponse>> = _wisataBudaya
 
+    // LiveData untuk wisata hiburan
+    private val _wisataHiburan = MutableLiveData<List<WisataResponse>>()
+    val wisataHiburan: LiveData<List<WisataResponse>> = _wisataHiburan
+
     // LiveData untuk loading dan error
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -51,9 +55,11 @@ class HomeViewModel(private val userRepository: UserRepository) : ViewModel() {
                 val response = userRepository.getWisata()
                 val alam = response.filter { it.categoryWisata_id == 1 }.distinctBy { it.id }
                 val budaya = response.filter { it.categoryWisata_id == 2 }.distinctBy { it.id }
+                val hiburan = response.filter { it.categoryWisata_id == 3 }.distinctBy { it.id }
 
                 _wisataAlam.value = alam
                 _wisataBudaya.value = budaya
+                _wisataHiburan.value = hiburan
             } catch (e: Exception) {
                 _errorMessage.value = e.message ?: "Error fetching wisata"
             } finally {

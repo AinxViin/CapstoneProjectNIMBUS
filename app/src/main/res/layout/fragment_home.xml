@@ -1,29 +1,28 @@
-<android.widget.ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.widget.ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
     <!-- Content LinearLayout -->
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#EDEDED">
+        android:background="#EDEDED"
+        android:orientation="vertical">
 
         <!-- Header -->
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:background="@color/green">
+            android:background="@color/green"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/logo"
-                android:contentDescription="Logo"/>
+                android:contentDescription="Logo"
+                android:src="@drawable/logo" />
 
             <TextView
                 android:layout_width="136dp"
@@ -37,21 +36,21 @@
 
         <!-- Search Bar -->
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:padding="8dp">
 
             <EditText
                 android:id="@+id/searchBar"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="48dp"
-                android:hint="Cari"
+                android:layout_weight="1"
                 android:background="@drawable/rounded_background"
-                android:padding="8dp"
                 android:drawableStart="@drawable/ic_search"
-                android:drawablePadding="8dp"/>
+                android:drawablePadding="8dp"
+                android:hint="Cari"
+                android:padding="8dp" />
         </LinearLayout>
 
         <!-- Horizontal List for Provinces -->
@@ -60,9 +59,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:orientation="horizontal"
             android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:orientation="horizontal"/>
+            android:paddingEnd="16dp" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -80,20 +79,20 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Wisata Alam"
+                android:textColor="#000000"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#000000"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvSeeAllAlam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lihat Semua"
-                android:textSize="14sp"
-                android:textColor="@color/grey"/>
+                android:textColor="@color/grey"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -101,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="16dp"
-            android:paddingEnd="16dp"/>
+            android:paddingEnd="16dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -111,20 +110,20 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Seni dan Budaya"
+                android:textColor="#000000"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#000000"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvSeeAllBudaya"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lihat Semua"
-                android:textSize="14sp"
-                android:textColor="@color/grey"/>
+                android:textColor="@color/grey"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -132,7 +131,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="16dp"
-            android:paddingEnd="16dp"/>
+            android:paddingEnd="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hiburan"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSeeAllHiburan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lihat Semua"
+                android:textColor="@color/grey"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewHiburan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
 
     </LinearLayout>
 

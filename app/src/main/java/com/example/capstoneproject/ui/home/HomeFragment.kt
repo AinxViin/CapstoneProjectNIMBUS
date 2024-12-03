@@ -24,6 +24,7 @@ class HomeFragment : Fragment() {
     private lateinit var provinceAdapter: ProvinceAdapter
     private lateinit var alamAdapter: WisataAdapter
     private lateinit var budayaAdapter: WisataAdapter
+    private lateinit var hiburanAdapter: WisataAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,9 +70,17 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = budayaAdapter
         }
+
+        // RecyclerView untuk hiburan
+        hiburanAdapter = WisataAdapter()
+        binding.recyclerViewHiburan.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = hiburanAdapter
+        }
     }
 
     private fun observeViewModel() {
+
         // Observasi data provinsi
         viewModel.provinces.observe(viewLifecycleOwner) { provinces ->
             provinceAdapter.submitList(provinces)
@@ -79,12 +88,20 @@ class HomeFragment : Fragment() {
 
         // Observasi data wisata alam
         viewModel.wisataAlam.observe(viewLifecycleOwner) { wisataAlam ->
-            alamAdapter.submitList(wisataAlam)
+            val limitedAlam = wisataAlam.take(6)  // Ambil hanya 6 item
+            alamAdapter.submitList(limitedAlam)
         }
 
         // Observasi data seni dan budaya
         viewModel.wisataBudaya.observe(viewLifecycleOwner) { wisataBudaya ->
-            budayaAdapter.submitList(wisataBudaya)
+            val limitedBudaya = wisataBudaya.take(6)  // Ambil hanya 6 item
+            budayaAdapter.submitList(limitedBudaya)
+        }
+
+        // Observasi data wisata hiburan
+        viewModel.wisataHiburan.observe(viewLifecycleOwner) { wisataHiburan ->
+            val limitedHiburan = wisataHiburan.take(6)  // Ambil hanya 6 item
+            hiburanAdapter.submitList(limitedHiburan)
         }
 
         // Observasi loading
@@ -107,6 +124,10 @@ class HomeFragment : Fragment() {
 
         binding.tvSeeAllBudaya.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAllSeniFragment())
+        }
+
+        binding.tvSeeAllHiburan.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAllHiburanFragment())
         }
     }
 
