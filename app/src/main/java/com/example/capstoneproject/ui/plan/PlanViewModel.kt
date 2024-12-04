@@ -1,4 +1,7 @@
 package com.example.capstoneproject.ui.plan
 
-class PlanViewModel {
+import androidx.lifecycle.ViewModel
+
+class PlanViewModel : ViewModel() {
+    var planName: String? = null
 }

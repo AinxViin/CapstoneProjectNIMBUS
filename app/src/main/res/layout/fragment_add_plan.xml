@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#355E3B">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvBottomSheetTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buat Perencanaan"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:paddingBottom="16dp" />
+
+    <!-- Input Field -->
+    <EditText
+        android:id="@+id/etPlanName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Misal : Liburan setelah natal"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#90EE90"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Create Button -->
+    <Button
+        android:id="@+id/btnCreatePlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/cream"
+        android:text="Buat"
+        android:textColor="#355E3B" />
+</LinearLayout>
