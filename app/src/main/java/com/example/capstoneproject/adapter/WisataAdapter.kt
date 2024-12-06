@@ -38,7 +38,6 @@ class WisataAdapter : RecyclerView.Adapter<WisataAdapter.WisataViewHolder>() {
         fun bind(wisata: WisataResponse) {
             title.text = wisata.nama
 
-            // Menampilkan gambar dengan Glide dan placeholder
             Glide.with(itemView.context)
                 .load(wisata.thumbnail) // Gambar utama dari data wisata
                 .placeholder(R.drawable.placeholder) // Placeholder saat gambar belum dimuat

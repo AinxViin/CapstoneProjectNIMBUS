@@ -32,5 +32,7 @@
     <string name="wisata">Wisata</string>
     <string name="lokasi">Lokasi</string>
 
+    <string name="change_password">Ganti Password</string>
+
 
 </resources>

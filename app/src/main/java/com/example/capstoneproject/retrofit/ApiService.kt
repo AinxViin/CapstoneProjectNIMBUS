@@ -1,9 +1,12 @@
 package com.example.capstoneproject.retrofit
 
+import com.example.capstoneproject.request.AddPlanRequest
 import com.example.capstoneproject.request.LoginRequest
 import com.example.capstoneproject.request.RegisterRequest
 import com.example.capstoneproject.request.UpdateRequest
+import com.example.capstoneproject.response.AddPlanResponse
 import com.example.capstoneproject.response.LoginResponse
+import com.example.capstoneproject.response.PlanResponse
 import com.example.capstoneproject.response.ProvinceResponse
 import com.example.capstoneproject.response.RegisterResponse
 import com.example.capstoneproject.response.UpdateResponse
@@ -38,4 +41,11 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("category_id") categoryId: Int
     ): List<WisataResponse>
+
+    @POST("api/user/rencana-manual")
+    suspend fun addPlan(@Body request: AddPlanRequest): AddPlanResponse
+
+    @GET("api/user/rencanaku-manual")
+    suspend fun getPlans(): List<PlanResponse>
+
 }

@@ -2,11 +2,13 @@ package com.example.capstoneproject.data
 
 import com.example.capstoneproject.data.pref.UserModel
 import com.example.capstoneproject.data.pref.UserPreference
+import com.example.capstoneproject.request.AddPlanRequest
 import com.example.capstoneproject.request.LoginRequest
 import com.example.capstoneproject.request.RegisterRequest
 import com.example.capstoneproject.request.UpdateRequest
 import com.example.capstoneproject.response.ErrorResponse
 import com.example.capstoneproject.response.LoginResponse
+import com.example.capstoneproject.response.PlanResponse
 import com.example.capstoneproject.response.ProvinceResponse
 import com.example.capstoneproject.response.RegisterResponse
 import com.example.capstoneproject.response.UpdateResponse
@@ -66,6 +68,10 @@ class UserRepository private constructor(
         userPreference.saveSessions(user)
     }
 
+    suspend fun getUserSession(): UserModel? {
+        return userPreference.getSession().firstOrNull() // Mengembalikan UserModel dari session
+    }
+
     suspend fun getProvinces(): List<ProvinceResponse> {
         return withContext(Dispatchers.IO) {
             val response = apiService.getProvinces()
@@ -90,6 +96,26 @@ class UserRepository private constructor(
 
         return@withContext allWisata
     }
+
+    suspend fun addPlan(addPlanRequest: AddPlanRequest): Boolean {
+        return try {
+            apiService.addPlan(addPlanRequest) // Langsung mengirim request ke API
+            true
+        } catch (e: Exception) {
+            throw Exception("Failed to add plan: ${e.message}")
+        }
+    }
+
+
+    suspend fun getUserPlans(): List<PlanResponse> {
+        return try {
+            apiService.getPlans()
+        } catch (e: Exception) {
+            throw Exception("Failed to fetch plans: ${e.message}")
+        }
+    }
+
+
 
     companion object {
         @Volatile
