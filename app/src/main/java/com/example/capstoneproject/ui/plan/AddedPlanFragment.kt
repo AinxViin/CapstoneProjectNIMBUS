@@ -30,7 +30,7 @@ class AddedPlanFragment : Fragment() {
     private lateinit var userPreference: UserPreference
 
     private val viewModel: AddedPlanViewModel by viewModels {
-        // Pass apiService dan userPreference ke UserRepository
+        // Pass apiService dan userPareference ke UserRepository
         AddedPlanViewModelFactory(UserRepository.getInstance(apiService, userPreference))
     }
 
