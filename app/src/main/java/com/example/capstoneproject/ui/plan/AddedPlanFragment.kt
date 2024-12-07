@@ -2,20 +2,19 @@ package com.example.capstoneproject.ui.plan
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.capstoneproject.adapter.PlanAdapter
-import com.example.capstoneproject.data.UserRepository
 import com.example.capstoneproject.data.pref.UserPreference
 import com.example.capstoneproject.data.pref.dataStore
 import com.example.capstoneproject.databinding.FragmentAddedPlanBinding
 import com.example.capstoneproject.retrofit.ApiConfig
-import com.example.capstoneproject.retrofit.ApiService
+import com.example.capstoneproject.response.PlanResponse
 import kotlinx.coroutines.launch
 
 class AddedPlanFragment : Fragment() {
@@ -24,22 +23,6 @@ class AddedPlanFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var adapter: PlanAdapter
-
-    // Inisialisasi apiService dan userPreference
-    private lateinit var apiService: ApiService
-    private lateinit var userPreference: UserPreference
-
-    private val viewModel: AddedPlanViewModel by viewModels {
-        // Pass apiService dan userPareference ke UserRepository
-        AddedPlanViewModelFactory(UserRepository.getInstance(apiService, userPreference))
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        // Pastikan konteks sudah ter-attach sebelum melakukan inisialisasi
-        apiService = ApiConfig.apiService(UserPreference.getInstance(requireContext().dataStore))
-        userPreference = UserPreference.getInstance(requireContext().dataStore)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,24 +34,30 @@ class AddedPlanFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setupRecyclerView()
-        observePlans()
-    }
-
-    private fun setupRecyclerView() {
+        // Inisialisasi adapter
         adapter = PlanAdapter()
         binding.rvPlan.layoutManager = LinearLayoutManager(requireContext())
         binding.rvPlan.adapter = adapter
+
+        fetchPlans() // Panggil fungsi untuk mengambil data rencana
     }
 
-    private fun observePlans() {
+    private fun fetchPlans() {
+        // Panggil API untuk mendapatkan daftar rencana
         lifecycleScope.launch {
-            val userId = viewModel.getUserId() // Mendapatkan ID pengguna
-            viewModel.getPlans(userId).observe(viewLifecycleOwner) { plans ->
-                adapter.submitList(plans)
+            try {
+                val apiService = ApiConfig.apiService(UserPreference.getInstance(requireContext().dataStore))
+                val plans = apiService.getPlans() // Ambil data rencana
+                showPlans(plans)
+            } catch (e: Exception) {
+                Log.e("AddedPlanFragment", "Error fetching plans: ${e.message}")
             }
         }
+    }
+
+    private fun showPlans(plans: List<PlanResponse>) {
+        // Mengirimkan data ke adapter
+        adapter.submitList(plans)
     }
 
     override fun onDestroyView() {
@@ -76,4 +65,3 @@ class AddedPlanFragment : Fragment() {
         _binding = null
     }
 }
-

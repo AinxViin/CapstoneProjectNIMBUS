@@ -1,7 +1,6 @@
 package com.example.capstoneproject.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.R
@@ -12,6 +11,7 @@ class PlanAdapter : RecyclerView.Adapter<PlanAdapter.PlanViewHolder>() {
 
     private val plans = mutableListOf<PlanResponse>()
 
+    // Fungsi untuk memperbarui data dalam adapter
     fun submitList(newPlans: List<PlanResponse>) {
         plans.clear()
         plans.addAll(newPlans)
@@ -29,13 +29,16 @@ class PlanAdapter : RecyclerView.Adapter<PlanAdapter.PlanViewHolder>() {
 
     override fun getItemCount(): Int = plans.size
 
+    // ViewHolder untuk setiap item dalam RecyclerView
     class PlanViewHolder(private val binding: ItemPlanBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(plan: PlanResponse) {
+            // Menampilkan nama rencana di TextView
             binding.tvPlanTitle.text = plan.nama
-            // You can load images using libraries like Glide or Picasso
-            // Glide.with(binding.ivPlanImage).load(plan.image).into(binding.ivPlanImage)
+
+            // Menampilkan placeholder di ImageView
+            binding.ivPlanImage.setImageResource(R.drawable.placeholder)
         }
     }
 }
