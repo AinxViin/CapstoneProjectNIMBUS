@@ -37,8 +37,6 @@ class PlanAdapter : RecyclerView.Adapter<PlanAdapter.PlanViewHolder>() {
             // Menampilkan nama rencana di TextView
             binding.tvPlanTitle.text = plan.nama
 
-            // Menampilkan placeholder di ImageView
-            binding.ivPlanImage.setImageResource(R.drawable.placeholder)
         }
     }
 }

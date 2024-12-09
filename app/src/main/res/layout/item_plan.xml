@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:contentDescription="Category Image"
             android:scaleType="centerCrop"
-            android:src="@drawable/placeholder"/>
+            android:src="@drawable/templatewisata"/>
     </FrameLayout>
 
     <TextView
