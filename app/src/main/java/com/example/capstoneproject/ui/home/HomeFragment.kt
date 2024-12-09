@@ -14,7 +14,6 @@ import com.example.capstoneproject.adapter.WisataAdapter
 import com.example.capstoneproject.databinding.FragmentHomeBinding
 import com.example.capstoneproject.di.Injection
 import com.example.capstoneproject.response.WisataResponse
-import com.example.capstoneproject.ui.addwisata.AddWisataFragment
 
 class HomeFragment : Fragment() {
 
