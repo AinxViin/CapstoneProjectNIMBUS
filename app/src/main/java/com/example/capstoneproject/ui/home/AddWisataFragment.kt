@@ -1,4 +1,4 @@
-package com.example.capstoneproject.ui.addwisata
+package com.example.capstoneproject.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
