@@ -56,7 +56,6 @@ class AddedPlanFragment : Fragment() {
     }
 
     private fun showPlans(plans: List<PlanResponse>) {
-        // Mengirimkan data ke adapter
         adapter.submitList(plans)
     }
 

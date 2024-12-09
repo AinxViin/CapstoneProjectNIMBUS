@@ -13,6 +13,8 @@ import com.example.capstoneproject.adapter.ProvinceAdapter
 import com.example.capstoneproject.adapter.WisataAdapter
 import com.example.capstoneproject.databinding.FragmentHomeBinding
 import com.example.capstoneproject.di.Injection
+import com.example.capstoneproject.response.WisataResponse
+import com.example.capstoneproject.ui.addwisata.AddWisataFragment
 
 class HomeFragment : Fragment() {
 
@@ -49,33 +51,40 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        // RecyclerView untuk provinsi
         provinceAdapter = ProvinceAdapter()
         binding.recyclerViewProvinces.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = provinceAdapter
+            adapter = provinceAdapter // Inisialisasi adapter
         }
 
-        // RecyclerView untuk wisata alam
-        alamAdapter = WisataAdapter()
+        alamAdapter = WisataAdapter { wisata ->
+            openAddWisataBottomSheet(wisata)
+        }
         binding.recyclerViewAlam.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = alamAdapter
         }
 
-        // RecyclerView untuk seni dan budaya
-        budayaAdapter = WisataAdapter()
+        budayaAdapter = WisataAdapter { wisata ->
+            openAddWisataBottomSheet(wisata)
+        }
         binding.recyclerViewBudaya.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = budayaAdapter
         }
 
-        // RecyclerView untuk hiburan
-        hiburanAdapter = WisataAdapter()
+        hiburanAdapter = WisataAdapter { wisata ->
+            openAddWisataBottomSheet(wisata)
+        }
         binding.recyclerViewHiburan.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = hiburanAdapter
         }
+    }
+
+    private fun openAddWisataBottomSheet(wisata: WisataResponse) {
+        val addWisataFragment = AddWisataFragment.newInstance(wisata)
+        addWisataFragment.show(childFragmentManager, AddWisataFragment.TAG)
     }
 
     private fun observeViewModel() {

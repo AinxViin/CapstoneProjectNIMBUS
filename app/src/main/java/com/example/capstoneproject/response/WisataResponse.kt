@@ -1,5 +1,9 @@
 package com.example.capstoneproject.response
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class WisataResponse(
     val id: Int,
     val nama: String,
@@ -14,4 +18,4 @@ data class WisataResponse(
     val longitude: String,
     val review_total: String,
     val website: String?
-)
+) : Parcelable

@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.capstoneproject.R
 import com.example.capstoneproject.response.WisataResponse
 
-class WisataAdapter : RecyclerView.Adapter<WisataAdapter.WisataViewHolder>() {
+class WisataAdapter(private val onFavoriteClick: (WisataResponse) -> Unit) : RecyclerView.Adapter<WisataAdapter.WisataViewHolder>() {
 
     private val wisataList = mutableListOf<WisataResponse>()
 
@@ -26,7 +26,7 @@ class WisataAdapter : RecyclerView.Adapter<WisataAdapter.WisataViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: WisataViewHolder, position: Int) {
-        holder.bind(wisataList[position])
+        holder.bind(wisataList[position], onFavoriteClick)
     }
 
     override fun getItemCount(): Int = wisataList.size
@@ -34,14 +34,20 @@ class WisataAdapter : RecyclerView.Adapter<WisataAdapter.WisataViewHolder>() {
     class WisataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val title: TextView = itemView.findViewById(R.id.tvCategoryTitle)
         private val thumbnail: ImageView = itemView.findViewById(R.id.ivCategoryImage)
+        private val favoriteIcon: ImageView = itemView.findViewById(R.id.ivFavoriteIcon)
 
-        fun bind(wisata: WisataResponse) {
+        fun bind(wisata: WisataResponse, onFavoriteClick: (WisataResponse) -> Unit) {
             title.text = wisata.nama
 
             Glide.with(itemView.context)
                 .load(wisata.thumbnail) // Gambar utama dari data wisata
                 .placeholder(R.drawable.placeholder) // Placeholder saat gambar belum dimuat
                 .into(thumbnail)
+
+            favoriteIcon.setOnClickListener {
+                onFavoriteClick(wisata)
+            }
         }
     }
 }
+
