@@ -3,7 +3,6 @@ package com.example.capstoneproject.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.ItemPlanBinding
 import com.example.capstoneproject.response.PlanResponse
 

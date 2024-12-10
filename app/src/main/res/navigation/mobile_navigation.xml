@@ -90,6 +90,21 @@
     <fragment
         android:id="@+id/addedPlanFragment"
         android:name="com.example.capstoneproject.ui.plan.AddedPlanFragment"
-        tools:layout="@layout/fragment_added_plan" />
+        tools:layout="@layout/fragment_added_plan">
+        <action
+            android:id="@+id/action_addedPlanFragment_to_detailPlanFragment"
+            app:destination="@id/detailPlanFragment" />
+    </fragment>
+
+    <!-- Detail Plan Fragment -->
+    <fragment
+        android:id="@+id/detailPlanFragment"
+        android:name="com.example.capstoneproject.ui.plan.DetailPlanFragment"
+        android:label="Detail Plan"
+        tools:layout="@layout/fragment_detail_plan">
+        <argument
+            android:name="selectedPlan"
+            app:argType="com.example.capstoneproject.response.PlanResponse" />
+    </fragment>
 
 </navigation>

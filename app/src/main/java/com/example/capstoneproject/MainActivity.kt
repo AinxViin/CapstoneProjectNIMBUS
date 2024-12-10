@@ -46,7 +46,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_profile,
                 R.id.navigation_change_name,
                 R.id.navigation_change_email,
-                R.id.navigation_change_password
+                R.id.navigation_change_password,
+                R.id.navigation_explore
             )
         )
         // Link the Toolbar with the NavController

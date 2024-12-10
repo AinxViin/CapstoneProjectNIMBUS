@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.capstoneproject.data.UserRepository
 import com.example.capstoneproject.response.ProvinceResponse
+import com.example.capstoneproject.response.WisataCategoryResponse
+import com.example.capstoneproject.response.WisataCategoryResponseItem
 import com.example.capstoneproject.response.WisataResponse
 import kotlinx.coroutines.launch
 
@@ -26,6 +28,10 @@ class HomeViewModel(private val userRepository: UserRepository) : ViewModel() {
     // LiveData untuk wisata hiburan
     private val _wisataHiburan = MutableLiveData<List<WisataResponse>>()
     val wisataHiburan: LiveData<List<WisataResponse>> = _wisataHiburan
+
+    // LiveData untuk kategori
+    private val _categoryWisata = MutableLiveData<List<WisataCategoryResponseItem>>()
+    val categoryWisata: LiveData<List<WisataCategoryResponseItem>> = _categoryWisata
 
     // LiveData untuk loading dan error
     private val _isLoading = MutableLiveData<Boolean>()
@@ -60,6 +66,21 @@ class HomeViewModel(private val userRepository: UserRepository) : ViewModel() {
                 _wisataAlam.value = alam
                 _wisataBudaya.value = budaya
                 _wisataHiburan.value = hiburan
+            } catch (e: Exception) {
+                _errorMessage.value = e.message ?: "Error fetching wisata"
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
+    fun getCategoryWisata() {
+        _isLoading.value = true
+        viewModelScope.launch {
+            try {
+                val response = userRepository.getCategoryWisata()
+
+                _categoryWisata.value = response
             } catch (e: Exception) {
                 _errorMessage.value = e.message ?: "Error fetching wisata"
             } finally {

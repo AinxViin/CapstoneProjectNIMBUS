@@ -8,6 +8,8 @@ import com.example.capstoneproject.response.AddPlanResponse
 import com.example.capstoneproject.response.LoginResponse
 import com.example.capstoneproject.response.PlanResponse
 import com.example.capstoneproject.response.ProvinceResponse
+import com.example.capstoneproject.response.RecommendationRequest
+import com.example.capstoneproject.response.RecommendationResponse
 import com.example.capstoneproject.response.RegisterResponse
 import com.example.capstoneproject.response.UpdateResponse
 import com.example.capstoneproject.response.UserResponse
@@ -47,5 +49,13 @@ interface ApiService {
 
     @GET("api/user/rencanaku-manual")
     suspend fun getPlans(): List<PlanResponse>
+
+    @POST("api/user/rencana-otomatis")
+    suspend fun getRecommendations(
+        @Body request: RecommendationRequest
+    ): RecommendationResponse
+
+    @GET("api/user/category-wisata")
+    suspend fun getCategoryWisata(): List<WisataCategoryResponseItem>
 
 }

@@ -40,6 +40,16 @@ class UserRepository private constructor(
         }
     }
 
+    suspend fun getRecommendations(request: RecommendationRequest): RecommendationResponse {
+        return try {
+            apiService.getRecommendations(request)
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
+            throw Exception(errorResponse.message)
+        }
+    }
+
     suspend fun getUser(): UserResponse {
         return try {
             apiService.getData()
@@ -47,6 +57,13 @@ class UserRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
             throw Exception(errorResponse.message)
+        }
+    }
+
+    suspend fun getCategoryWisata(): List<WisataCategoryResponseItem> {
+        return withContext(Dispatchers.IO) {
+            val response = apiService.getCategoryWisata()
+            response // Assuming `getProvinces` returns a list of ProvinceResponse
         }
     }
 
