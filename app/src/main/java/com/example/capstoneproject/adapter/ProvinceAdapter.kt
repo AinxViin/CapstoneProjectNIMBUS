@@ -12,7 +12,7 @@ import com.example.capstoneproject.response.ProvinceResponse
 
 class ProvinceAdapter : RecyclerView.Adapter<ProvinceAdapter.ProvinceViewHolder>() {
 
-    private val provinceList = mutableListOf<ProvinceResponse>()
+    val provinceList = mutableListOf<ProvinceResponse>()
 
     fun submitList(list: List<ProvinceResponse>) {
         provinceList.clear()

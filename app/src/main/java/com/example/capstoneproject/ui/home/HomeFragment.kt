@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
         setupViewModel()
         setupRecyclerView()
         observeViewModel()
-        setupClickListeners()
+        setupSeeAllClickListeners()
 
         return root
     }
@@ -48,6 +48,23 @@ class HomeFragment : Fragment() {
         viewModel.getWisata() // Panggil fungsi untuk mendapatkan data wisata
     }
 
+    private fun setupSeeAllClickListeners() {
+        binding.tvSeeAllAlam.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllAlamFragment()
+            findNavController().navigate(action)
+        }
+
+        binding.tvSeeAllBudaya.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllSeniFragment()
+            findNavController().navigate(action)
+        }
+
+        binding.tvSeeAllHiburan.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllHiburanFragment()
+            findNavController().navigate(action)
+        }
+    }
+
     private fun setupRecyclerView() {
         // RecyclerView untuk provinsi
         provinceAdapter = ProvinceAdapter()
@@ -57,21 +74,30 @@ class HomeFragment : Fragment() {
         }
 
         // RecyclerView untuk wisata alam
-        alamAdapter = WisataAdapter()
+        alamAdapter = WisataAdapter { wisataId ->
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailWisataFragment(wisataId)
+            findNavController().navigate(action)
+        }
         binding.recyclerViewAlam.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = alamAdapter
         }
 
         // RecyclerView untuk seni dan budaya
-        budayaAdapter = WisataAdapter()
+        budayaAdapter = WisataAdapter { wisataId ->
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailWisataFragment(wisataId)
+            findNavController().navigate(action)
+        }
         binding.recyclerViewBudaya.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = budayaAdapter
         }
 
         // RecyclerView untuk hiburan
-        hiburanAdapter = WisataAdapter()
+        hiburanAdapter = WisataAdapter { wisataId ->
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailWisataFragment(wisataId)
+            findNavController().navigate(action)
+        }
         binding.recyclerViewHiburan.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = hiburanAdapter
@@ -79,7 +105,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-
         // Observasi data provinsi
         viewModel.provinces.observe(viewLifecycleOwner) { provinces ->
             provinceAdapter.submitList(provinces)
@@ -115,21 +140,6 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
-    private fun setupClickListeners() {
-        binding.tvSeeAllAlam.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAllAlamFragment())
-        }
-
-        binding.tvSeeAllBudaya.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAllSeniFragment())
-        }
-
-        binding.tvSeeAllHiburan.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAllHiburanFragment())
-        }
-    }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

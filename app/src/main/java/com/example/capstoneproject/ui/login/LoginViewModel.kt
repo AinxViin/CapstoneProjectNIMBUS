@@ -12,18 +12,17 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     fun login(email: String, password: String, onResult: (Boolean, String) -> Unit) {
         viewModelScope.launch {
             try {
+                // Langkah 1: Login
                 val loginRequest = LoginRequest(email, password)
-
-                // Perform login
                 val loginResponse = userRepository.login(loginRequest)
 
-                // Fetch user details after successful login
+                // Langkah 2: Fetch user data after login is successful
                 val userDetails = fetchUserDetails(password)
 
-                // Save user session
+                // Langkah 3: Save user session
                 userRepository.saveSession(userDetails)
 
-                // Notify success
+                // Notify success after session is saved
                 onResult(true, loginResponse.message)
             } catch (e: Exception) {
                 // Notify failure
@@ -45,9 +44,7 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
                 isLogin = true
             )
         } catch (e: Exception) {
-            // Log or handle the error as needed
             throw Exception("Failed to fetch user details: ${e.message}", e)
         }
     }
-
 }

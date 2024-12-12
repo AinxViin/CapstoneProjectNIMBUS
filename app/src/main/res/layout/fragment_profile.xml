@@ -154,7 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Keluar"
-            android:textColor="@color/cream"
-            android:background="@color/green" />
+            android:textColor="@color/green"
+            android:backgroundTint="@color/cream" />
     </LinearLayout>
 </ScrollView>

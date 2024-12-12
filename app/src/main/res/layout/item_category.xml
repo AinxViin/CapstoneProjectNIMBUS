@@ -19,19 +19,6 @@
             android:scaleType="centerCrop"
             android:contentDescription="Category Image"/>
 
-        <!-- Bookmark Icon -->
-        <ImageView
-            android:id="@+id/ivFavoriteIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="top|end"
-            android:layout_margin="8dp"
-            android:background="@drawable/rounded_background"
-            android:padding="8dp"
-            android:src="@drawable/unfav"
-            android:contentDescription="Favorite Icon"
-            android:clickable="true"
-            android:focusable="true"/>
     </FrameLayout>
 
     <!-- Text Section -->

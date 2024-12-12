@@ -6,9 +6,10 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 object ApiConfig {
-    private const val BASE_URL = "https://nimbus-dev-374190138836.asia-southeast2.run.app/"
+    private const val BASE_URL = "https://nimbus-443014235398.asia-southeast2.run.app/api/"
 
     fun apiService(userPreference: UserPreference): ApiService {
         // Create an HttpLoggingInterceptor to log API requests and responses
@@ -21,6 +22,7 @@ object ApiConfig {
             .addInterceptor(loggingInterceptor)
             .cookieJar(CustomCookieJar(userPreference))
             .build()
+
 
         // Create a Retrofit instance with the OkHttpClient
         return Retrofit.Builder()

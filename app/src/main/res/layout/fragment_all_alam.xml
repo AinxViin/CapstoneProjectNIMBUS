@@ -1,19 +1,19 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ededed"
     android:orientation="vertical"
-    android:background="#ededed">
+    android:padding="10dp">
 
     <!-- Toolbar Section -->
-        <TextView
-            android:id="@+id/tvToolbarTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PEGUNUNGAN"
-            android:textSize="24sp"
-            android:textColor="#333333"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tvToolbarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alam"
+        android:textColor="#333333"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,9 +37,9 @@
         android:id="@+id/rvAllCategories"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
+        android:background="#ededed"
         android:clipToPadding="false"
-        android:scrollbars="vertical"
-        android:background="#ededed" />
+        android:padding="8dp"
+        android:scrollbars="vertical" />
 
 </LinearLayout>

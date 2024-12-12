@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
-                R.id.navigation_automatic,
                 R.id.navigation_plan,
                 R.id.navigation_profile,
                 R.id.navigation_change_name,
@@ -50,7 +49,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_explore
             )
         )
-        // Link the Toolbar with the NavController
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }

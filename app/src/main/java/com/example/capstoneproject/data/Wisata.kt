@@ -16,5 +16,6 @@ data class Wisata(
     val website: String?,
     val created_at: String,
     val provinsi: Provinsi,
-    val categoryWisata: CategoryWisata
+    val categoryWisata: CategoryWisata,
+    val rating: Float
 )

@@ -6,13 +6,18 @@ import com.example.capstoneproject.request.AddPlanRequest
 import com.example.capstoneproject.request.LoginRequest
 import com.example.capstoneproject.request.RegisterRequest
 import com.example.capstoneproject.request.UpdateRequest
+import com.example.capstoneproject.request.WisataToPlanRequest
 import com.example.capstoneproject.response.ErrorResponse
 import com.example.capstoneproject.response.LoginResponse
+import com.example.capstoneproject.response.PlanDestinationResponse
 import com.example.capstoneproject.response.PlanResponse
 import com.example.capstoneproject.response.ProvinceResponse
+import com.example.capstoneproject.response.RecommendationRequest
+import com.example.capstoneproject.response.RecommendationResponse
 import com.example.capstoneproject.response.RegisterResponse
 import com.example.capstoneproject.response.UpdateResponse
 import com.example.capstoneproject.response.UserResponse
+import com.example.capstoneproject.response.WisataCategoryResponseItem
 import com.example.capstoneproject.response.WisataResponse
 import com.example.capstoneproject.retrofit.ApiService
 import com.google.gson.Gson
@@ -50,6 +55,7 @@ class UserRepository private constructor(
         }
     }
 
+
     suspend fun getUser(): UserResponse {
         return try {
             apiService.getData()
@@ -69,8 +75,6 @@ class UserRepository private constructor(
 
     suspend fun updateUser(updateRequest: UpdateRequest): UpdateResponse {
         return try {
-            val userData = userPreference.getSession().firstOrNull()
-            val token = userData?.token ?: throw Exception("User token is missing")
             apiService.updateInfo(updateRequest)
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
@@ -82,7 +86,11 @@ class UserRepository private constructor(
     }
 
     suspend fun saveSession(user: UserModel) {
-        userPreference.saveSessions(user)
+        if (user.isLogin) {
+            userPreference.saveSessions(user)
+        } else {
+            throw Exception("Failed to save session: User not logged in")
+        }
     }
 
     suspend fun getUserSession(): UserModel? {
@@ -132,7 +140,73 @@ class UserRepository private constructor(
         }
     }
 
+    suspend fun getPlanDestinations(planId: Int): List<PlanDestinationResponse> {
+        return try {
+            apiService.getPlanDestinations(planId)
+        } catch (e: Exception) {
+            throw Exception("Failed to fetch destinations: ${e.message}")
+        }
+    }
 
+    suspend fun deleteDestination(planId: Int, wisataId: Int): Boolean {
+        return try {
+            val response = apiService.deleteDestination(planId, wisataId)
+            response.isSuccessful
+        } catch (e: Exception) {
+            throw Exception("Failed to delete destination: ${e.message}")
+        }
+    }
+
+    suspend fun addWisataToPlan(request: WisataToPlanRequest): Boolean{
+        return try {
+            apiService.addWisatatoPlan(request)
+            true
+        } catch (e: Exception) {
+            throw Exception("Failed to add Wisata : ${e.message}")
+        }
+    }
+
+    suspend fun getWisataAlam(): List<WisataDetail> {
+        return try {
+            val response = apiService.getWisataAlam()
+
+            if (response.isSuccessful) {
+                response.body()?.data ?: emptyList()
+            } else {
+                emptyList()
+            }
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
+    suspend fun getWisataHiburan(): List<WisataDetail> {
+        return try {
+            val response = apiService.getWisataHiburan()
+
+            if (response.isSuccessful) {
+                response.body()?.data ?: emptyList()
+            } else {
+                emptyList()
+            }
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
+    suspend fun getWisataSeni(): List<WisataDetail> {
+        return try {
+            val response = apiService.getWisataSeni()
+
+            if (response.isSuccessful) {
+                response.body()?.data ?: emptyList()
+            } else {
+                emptyList()
+            }
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
 
     companion object {
         @Volatile

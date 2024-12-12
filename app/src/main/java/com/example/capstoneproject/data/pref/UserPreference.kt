@@ -87,12 +87,6 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         return cookies
     }
 
-    suspend fun clearCookies() {
-        dataStore.edit { preferences ->
-            preferences.remove(COOKIE_KEY)
-        }
-    }
-
 
     companion object {
         @Volatile
