@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.capstoneproject.data.UserRepository
 import com.example.capstoneproject.response.ProvinceResponse
-import com.example.capstoneproject.response.WisataCategoryResponse
 import com.example.capstoneproject.response.WisataCategoryResponseItem
 import com.example.capstoneproject.response.WisataResponse
 import kotlinx.coroutines.launch

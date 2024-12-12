@@ -158,7 +158,7 @@ class UserRepository private constructor(
         }
     }
 
-    suspend fun addWisataToPlan(request: WisataToPlanRequest): Boolean{
+    suspend fun addWisataToPlan(request: WisataToPlanRequest): Boolean {
         return try {
             apiService.addWisatatoPlan(request)
             true

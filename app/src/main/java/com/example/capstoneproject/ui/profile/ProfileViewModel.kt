@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.capstoneproject.data.UserRepository
-import com.example.capstoneproject.data.pref.UserModel
-import com.example.capstoneproject.request.LoginRequest
 import com.example.capstoneproject.request.UpdateRequest
 import kotlinx.coroutines.launch
 

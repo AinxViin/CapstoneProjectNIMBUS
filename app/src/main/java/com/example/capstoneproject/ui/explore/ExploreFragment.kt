@@ -99,7 +99,8 @@ class ExploreFragment : Fragment() {
             categoryAdapter.submitList(categories)
         }
 
-        binding.recyclerViewProvinces.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
+        binding.recyclerViewProvinces.addOnItemTouchListener(object :
+            RecyclerView.OnItemTouchListener {
             override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
 
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
@@ -117,7 +118,8 @@ class ExploreFragment : Fragment() {
             }
         })
 
-        binding.recyclerViewCategories.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
+        binding.recyclerViewCategories.addOnItemTouchListener(object :
+            RecyclerView.OnItemTouchListener {
             override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
 
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
@@ -135,9 +137,14 @@ class ExploreFragment : Fragment() {
                         val date = "2024-12-25"
 
                         if (name.isEmpty() || budget.isEmpty() || date.isEmpty()) {
-                            Toast.makeText(requireContext(), "All fields required", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                requireContext(),
+                                "All fields required",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         } else {
-                            val intent = Intent(requireContext(), RecommendationActivity::class.java)
+                            val intent =
+                                Intent(requireContext(), RecommendationActivity::class.java)
                             intent.putExtra("name", name)
                             intent.putExtra("provinceId", provinceId)
                             intent.putExtra("categoryId", clickedCategory.id)
@@ -156,7 +163,8 @@ class ExploreFragment : Fragment() {
     private fun setupViewModels() {
         val factory = Injection.provideViewModelFactory(requireContext())
         viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
-        recommendationViewModel = ViewModelProvider(this, factory)[RecommendationViewModel::class.java]
+        recommendationViewModel =
+            ViewModelProvider(this, factory)[RecommendationViewModel::class.java]
         viewModel.getProvinces()
         viewModel.getCategoryWisata()
     }

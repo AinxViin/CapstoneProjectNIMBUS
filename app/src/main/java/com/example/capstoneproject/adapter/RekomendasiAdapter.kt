@@ -10,7 +10,8 @@ import com.bumptech.glide.Glide
 import com.example.capstoneproject.R
 import com.example.capstoneproject.response.WisataResponse
 
-class RekomendasiAdapter(private val onItemClick: (Int) -> Unit) : RecyclerView.Adapter<RekomendasiAdapter.WisataViewHolder>() {
+class RekomendasiAdapter(private val onItemClick: (Int) -> Unit) :
+    RecyclerView.Adapter<RekomendasiAdapter.WisataViewHolder>() {
 
     private val wisataList = mutableListOf<WisataResponse>()
 
@@ -22,7 +23,8 @@ class RekomendasiAdapter(private val onItemClick: (Int) -> Unit) : RecyclerView.
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WisataViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_rekomendasi_list, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_rekomendasi_list, parent, false)
         return WisataViewHolder(view)
     }
 

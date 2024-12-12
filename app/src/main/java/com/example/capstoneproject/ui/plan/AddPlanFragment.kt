@@ -43,14 +43,26 @@ class AddPlanFragment : BottomSheetDialogFragment() {
                 lifecycleScope.launch {
                     try {
                         addPlanViewModel.addPlan(planName)
-                        Toast.makeText(requireContext(), "Rencana dibuat: $planName", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            "Rencana dibuat: $planName",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         dismiss()
                     } catch (e: Exception) {
-                        Toast.makeText(requireContext(), "Gagal membuat rencana: ${e.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            "Gagal membuat rencana: ${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             } else {
-                Toast.makeText(requireContext(), "Nama rencana tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Nama rencana tidak boleh kosong!",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

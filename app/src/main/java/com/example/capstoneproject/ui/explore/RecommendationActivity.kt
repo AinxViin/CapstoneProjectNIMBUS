@@ -33,7 +33,13 @@ class RecommendationActivity : AppCompatActivity() {
         setupRecyclerView()
     }
 
-    private fun setupViewModel(province: Int, category: Int, name: String?, budget: String?, date: String?) {
+    private fun setupViewModel(
+        province: Int,
+        category: Int,
+        name: String?,
+        budget: String?,
+        date: String?
+    ) {
         viewModel.getRecommendation(
             request = RecommendationRequest(
                 nama = name.toString(),

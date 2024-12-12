@@ -19,7 +19,8 @@ class RegisterViewModel(private val userRepository: UserRepository) : ViewModel(
     ) {
         viewModelScope.launch {
             try {
-                val registerRequest = RegisterRequest(nama, username, email, password, password_confirm)
+                val registerRequest =
+                    RegisterRequest(nama, username, email, password, password_confirm)
 
                 val response: RegisterResponse = userRepository.register(registerRequest)
 

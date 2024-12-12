@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.capstoneproject.R
-import com.example.capstoneproject.adapter.WisataAlamAdapter
 import com.example.capstoneproject.adapter.WisataHiburanAdapter
 import com.example.capstoneproject.data.ItemOffsetDecoration
 import com.example.capstoneproject.data.UserRepository
@@ -49,7 +48,8 @@ class AllHiburanFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val itemDecoration = ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.recycler_view_spacing))
+        val itemDecoration =
+            ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.recycler_view_spacing))
         binding.rvAllCategories.addItemDecoration(itemDecoration)
         binding.rvAllCategories.layoutManager = LinearLayoutManager(requireContext())
         wisataHiburanAdapter = WisataHiburanAdapter(emptyList())
@@ -58,7 +58,8 @@ class AllHiburanFragment : Fragment() {
         wisataHiburanAdapter.setOnItemClickListener { wisata ->
             val wisataId = wisata.id
 
-            val action = AllHiburanFragmentDirections.actionAllHiburanFragmentToDetailWisataFragment(wisataId)
+            val action =
+                AllHiburanFragmentDirections.actionAllHiburanFragmentToDetailWisataFragment(wisataId)
             findNavController().navigate(action)
         }
     }

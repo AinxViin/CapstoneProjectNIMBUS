@@ -10,14 +10,14 @@ import kotlinx.coroutines.launch
 
 class SelectPlanViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    fun getPlans(userId:Int): LiveData<List<PlanResponse>>{
+    fun getPlans(userId: Int): LiveData<List<PlanResponse>> {
         val plansLiveData = MutableLiveData<List<PlanResponse>>()
         viewModelScope.launch {
             try {
                 val plans = userRepository.getUserPlans()
                 val filteredPlans = plans.filter { it.user_id == userId }
                 plansLiveData.postValue(filteredPlans)
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 plansLiveData.postValue(emptyList())
             }
         }

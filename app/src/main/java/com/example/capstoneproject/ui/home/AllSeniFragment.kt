@@ -10,13 +10,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.capstoneproject.R
-import com.example.capstoneproject.adapter.WisataHiburanAdapter
 import com.example.capstoneproject.adapter.WisataSeniAdapter
 import com.example.capstoneproject.data.ItemOffsetDecoration
 import com.example.capstoneproject.data.UserRepository
 import com.example.capstoneproject.data.pref.UserPreference
 import com.example.capstoneproject.data.pref.dataStore
-import com.example.capstoneproject.databinding.FragmentAllHiburanBinding
 import com.example.capstoneproject.databinding.FragmentAllSeniBinding
 import com.example.capstoneproject.retrofit.ApiConfig
 import kotlinx.coroutines.launch
@@ -50,7 +48,8 @@ class AllSeniFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val itemDecoration = ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.recycler_view_spacing))
+        val itemDecoration =
+            ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.recycler_view_spacing))
         binding.rvAllCategories.addItemDecoration(itemDecoration)
         binding.rvAllCategories.layoutManager = LinearLayoutManager(requireContext())
         wisataSeniAdapter = WisataSeniAdapter(emptyList())
@@ -59,7 +58,8 @@ class AllSeniFragment : Fragment() {
         wisataSeniAdapter.setOnItemClickListener { wisata ->
             val wisataId = wisata.id
 
-            val action = AllSeniFragmentDirections.actionAllSeniFragmentToDetailWisataFragment(wisataId)
+            val action =
+                AllSeniFragmentDirections.actionAllSeniFragmentToDetailWisataFragment(wisataId)
             findNavController().navigate(action)
         }
     }

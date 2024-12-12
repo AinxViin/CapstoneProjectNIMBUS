@@ -45,7 +45,8 @@ class AddedPlanFragment : Fragment() {
         binding.rvPlan.layoutManager = LinearLayoutManager(requireContext())
         binding.rvPlan.adapter = adapter
 
-        val itemDecoration = ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.recycler_view_spacing))
+        val itemDecoration =
+            ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.recycler_view_spacing))
         binding.rvPlan.addItemDecoration(itemDecoration)
 
         adapter.setOnItemClickListener { plan ->

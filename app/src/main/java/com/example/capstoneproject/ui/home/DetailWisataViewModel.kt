@@ -13,7 +13,10 @@ import com.example.capstoneproject.retrofit.ApiConfig
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class DetailWisataViewModel(private val userPreference: UserPreference, private val userRepository: UserRepository) : ViewModel() {
+class DetailWisataViewModel(
+    private val userPreference: UserPreference,
+    private val userRepository: UserRepository
+) : ViewModel() {
 
     private val _detailWisata = MutableLiveData<DetailWisataResponse>()
     val detailWisata: LiveData<DetailWisataResponse> get() = _detailWisata

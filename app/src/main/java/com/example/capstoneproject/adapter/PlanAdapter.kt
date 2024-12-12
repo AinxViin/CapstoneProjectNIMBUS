@@ -47,7 +47,8 @@ class PlanAdapter : RecyclerView.Adapter<PlanAdapter.PlanViewHolder>() {
     override fun getItemCount(): Int = plans.size
 
     // ViewHolder yang menangani binding data ke item
-    class PlanViewHolder(private val binding: ItemPlanBinding) : RecyclerView.ViewHolder(binding.root) {
+    class PlanViewHolder(private val binding: ItemPlanBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
             plan: PlanResponse,

@@ -39,7 +39,7 @@ class ChangeNameFragment : Fragment() {
 
     private fun setupUI() {
         lifecycleScope.launch {
-            userPreference.getSession().collect {user ->
+            userPreference.getSession().collect { user ->
                 binding.oldNameEditText.setText(user.name)
             }
         }
@@ -47,7 +47,8 @@ class ChangeNameFragment : Fragment() {
         binding.saveNameButton.setOnClickListener {
             val newName = binding.newNameEditText.text.toString().trim()
             if (newName.isEmpty()) {
-                Toast.makeText(requireContext(), "Nama baru tidak boleh kosong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Nama baru tidak boleh kosong", Toast.LENGTH_SHORT)
+                    .show()
             } else {
                 lifecycleScope.launch {
                     profileViewModel.updateInfo(
@@ -59,7 +60,11 @@ class ChangeNameFragment : Fragment() {
                                 lifecycleScope.launch {
                                     userPreference.updateName(newName)
                                 }
-                                Toast.makeText(requireContext(), "Nama berhasil diperbarui", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Nama berhasil diperbarui",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                                 parentFragmentManager.popBackStack()
                             } else {
                                 Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()

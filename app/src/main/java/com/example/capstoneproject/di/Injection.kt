@@ -17,7 +17,8 @@ object Injection {
     }
 
     fun provideViewModelFactory(context: Context): HomeViewModelFactory {
-        val userRepository = provideRepository(context)  // Menggunakan UserRepository yang sudah ada
+        val userRepository =
+            provideRepository(context)  // Menggunakan UserRepository yang sudah ada
         return HomeViewModelFactory(userRepository)
     }
 

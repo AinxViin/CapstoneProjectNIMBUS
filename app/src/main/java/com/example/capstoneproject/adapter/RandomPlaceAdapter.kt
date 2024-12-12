@@ -25,7 +25,8 @@ class RandomPlaceAdapter : RecyclerView.Adapter<RandomPlaceAdapter.WisataViewHol
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WisataViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_rekomendasi, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_rekomendasi, parent, false)
         return WisataViewHolder(view)
     }
 
@@ -53,10 +54,29 @@ class RandomPlaceAdapter : RecyclerView.Adapter<RandomPlaceAdapter.WisataViewHol
 
             // Define the maximum number of stars
             val maxStars = 5
-            val displayRating = ratingInt.coerceIn(0, maxStars) // Ensure rating is between 0 and maxStars
-            val wisataAlamImage = listOf(R.drawable.alam_1, R.drawable.alam_2, R.drawable.alam_3, R.drawable.alam_4, R.drawable.alam_5)
-            val hiburanImage = listOf(R.drawable.hiburan_1, R.drawable.hiburan_2, R.drawable.hiburan_3, R.drawable.hiburan_4, R.drawable.hiburan_5)
-            val seniBudayaImage = listOf(R.drawable.senbud_1, R.drawable.senbud_2, R.drawable.senbud_3, R.drawable.senbud_4, R.drawable.senbud_5)
+            val displayRating =
+                ratingInt.coerceIn(0, maxStars) // Ensure rating is between 0 and maxStars
+            val wisataAlamImage = listOf(
+                R.drawable.alam_1,
+                R.drawable.alam_2,
+                R.drawable.alam_3,
+                R.drawable.alam_4,
+                R.drawable.alam_5
+            )
+            val hiburanImage = listOf(
+                R.drawable.hiburan_1,
+                R.drawable.hiburan_2,
+                R.drawable.hiburan_3,
+                R.drawable.hiburan_4,
+                R.drawable.hiburan_5
+            )
+            val seniBudayaImage = listOf(
+                R.drawable.senbud_1,
+                R.drawable.senbud_2,
+                R.drawable.senbud_3,
+                R.drawable.senbud_4,
+                R.drawable.senbud_5
+            )
 
             val randomAlamImage = wisataAlamImage.random()
             val randomHiburanImage = hiburanImage.random()

@@ -36,7 +36,7 @@ class DetailPlanFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        
+
         adapter = DestinationAdapter()
         binding.rvDestinations.layoutManager = LinearLayoutManager(requireContext())
         binding.rvDestinations.adapter = adapter

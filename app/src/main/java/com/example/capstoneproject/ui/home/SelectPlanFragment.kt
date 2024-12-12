@@ -50,12 +50,13 @@ class SelectPlanFragment : Fragment() {
 
         (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
-        val itemDecoration = ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.recycler_view_spacing))
+        val itemDecoration =
+            ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.recycler_view_spacing))
         binding.rvSelectPlans.addItemDecoration(itemDecoration)
 
         val userPreference = UserPreference.getInstance(requireContext().dataStore)
         val apiService = ApiConfig.apiService(userPreference)
-        userRepository = UserRepository.getInstance(apiService,userPreference)
+        userRepository = UserRepository.getInstance(apiService, userPreference)
 
         adapter = SelectPlanAdapter()
         binding.rvSelectPlans.layoutManager = LinearLayoutManager(requireContext())
@@ -73,7 +74,8 @@ class SelectPlanFragment : Fragment() {
     private fun fetchPlans() {
         lifecycleScope.launch {
             try {
-                val apiService = ApiConfig.apiService(UserPreference.getInstance(requireContext().dataStore))
+                val apiService =
+                    ApiConfig.apiService(UserPreference.getInstance(requireContext().dataStore))
                 val plans = apiService.getPlans()
                 showPlans(plans)
             } catch (e: Exception) {
@@ -93,9 +95,17 @@ class SelectPlanFragment : Fragment() {
                 val response = userRepository.addWisataToPlan(request)
                 if (response) {
                     findNavController().navigate(R.id.action_selectPlanFragment_to_homeFragment)
-                    Toast.makeText(requireContext(), "Wisata berhasil ditambahkan", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Wisata berhasil ditambahkan",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
-                    Toast.makeText(requireContext(), "Failed to add Wisata to Plan", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Failed to add Wisata to Plan",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()

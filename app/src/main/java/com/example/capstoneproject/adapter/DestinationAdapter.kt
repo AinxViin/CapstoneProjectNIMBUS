@@ -22,7 +22,8 @@ class DestinationAdapter : RecyclerView.Adapter<DestinationAdapter.DestinationVi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DestinationViewHolder {
-        val binding = ItemDestinationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemDestinationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DestinationViewHolder(binding)
     }
 

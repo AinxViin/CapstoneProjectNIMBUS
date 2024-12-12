@@ -6,16 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.capstoneproject.ViewModelFactory
-import com.example.capstoneproject.data.UserRepository
 import com.example.capstoneproject.data.pref.UserPreference
 import com.example.capstoneproject.data.pref.dataStore
 import com.example.capstoneproject.databinding.FragmentChangeEmailBinding
 import com.example.capstoneproject.request.UpdateRequest
-import com.example.capstoneproject.retrofit.ApiConfig
 import kotlinx.coroutines.launch
 
 class ChangeEmailFragment : Fragment() {
@@ -27,6 +24,7 @@ class ChangeEmailFragment : Fragment() {
     private val profileViewModel by viewModels<ProfileViewModel> {
         ViewModelFactory.getInstance(requireContext())
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,7 +47,11 @@ class ChangeEmailFragment : Fragment() {
         binding.saveEmailButton.setOnClickListener {
             val newEmail = binding.newEmailEditText.text.toString().trim()
             if (newEmail.isEmpty()) {
-                Toast.makeText(requireContext(), "Email baru tidak boleh kosong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Email baru tidak boleh kosong",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 lifecycleScope.launch {
                     profileViewModel.updateInfo(
@@ -61,7 +63,11 @@ class ChangeEmailFragment : Fragment() {
                                 lifecycleScope.launch {
                                     userPreference.updateEmail(newEmail)
                                 }
-                                Toast.makeText(requireContext(), "Email berhasil diperbarui", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Email berhasil diperbarui",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                                 parentFragmentManager.popBackStack()
                             } else {
                                 Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()

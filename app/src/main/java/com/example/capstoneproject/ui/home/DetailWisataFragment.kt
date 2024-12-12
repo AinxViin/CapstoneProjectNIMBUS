@@ -49,7 +49,10 @@ class DetailWisataFragment : Fragment() {
         viewModel.fetchDetailWisata(wisataId)
 
         binding.btnAddToPlan.setOnClickListener {
-            val action = DetailWisataFragmentDirections.actionDetailWisataFragmentToSelectPlanFragment(wisataId)
+            val action =
+                DetailWisataFragmentDirections.actionDetailWisataFragmentToSelectPlanFragment(
+                    wisataId
+                )
             findNavController().navigate(action)
         }
 
@@ -80,7 +83,9 @@ class DetailWisataFragment : Fragment() {
         }
 
         val rekomendasiAdapter = RekomendasiAdapter { wisataDataId ->
-            val action = DetailWisataFragmentDirections.actionDetailFragmentToDetailWisataFragment(wisataDataId)
+            val action = DetailWisataFragmentDirections.actionDetailFragmentToDetailWisataFragment(
+                wisataDataId
+            )
             findNavController().navigate(action)
         }
         binding.recyclerViewRekomendasi.apply {

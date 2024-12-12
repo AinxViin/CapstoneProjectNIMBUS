@@ -45,8 +45,10 @@ class LoginActivity : AppCompatActivity() {
         binding.passwordEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun afterTextChanged(s: Editable?) {
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (s.length < 8) {
                     binding.passwordEditText.error = "Password tidak boleh kurang dari 8 karakter"
@@ -78,7 +80,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-        binding.registerButton.setOnClickListener{
+        binding.registerButton.setOnClickListener {
             val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(intent)
         }

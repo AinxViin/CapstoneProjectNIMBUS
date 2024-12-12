@@ -20,7 +20,6 @@ import com.example.capstoneproject.data.pref.dataStore
 import com.example.capstoneproject.databinding.FragmentProfileBinding
 import com.example.capstoneproject.request.UpdateRequest
 import com.example.capstoneproject.ui.login.LoginActivity
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
@@ -33,33 +32,46 @@ class ProfileFragment : Fragment() {
         ViewModelFactory.getInstance(requireContext())
     }
 
-    private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        if (uri != null) {
-            binding.profileImageView.setImageURI(uri)
+    private val pickImageLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            if (uri != null) {
+                binding.profileImageView.setImageURI(uri)
 
-            profileViewModel.updateInfo(
-                updateRequest = UpdateRequest(
-                    profilePic = uri.toString()
-                ),
-                onResult = { status, message ->
-                    if (status) {
-                        lifecycleScope.launch {
-                            try {
-                                userPreference.updateProfile(uri.toString())
-                                Toast.makeText(requireContext(), "Profile picture updated successfully", Toast.LENGTH_SHORT).show()
-                            } catch (e: Exception) {
-                                Toast.makeText(requireContext(), "Failed to save profile picture: ${e.message}", Toast.LENGTH_SHORT).show()
+                profileViewModel.updateInfo(
+                    updateRequest = UpdateRequest(
+                        profilePic = uri.toString()
+                    ),
+                    onResult = { status, message ->
+                        if (status) {
+                            lifecycleScope.launch {
+                                try {
+                                    userPreference.updateProfile(uri.toString())
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Profile picture updated successfully",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                } catch (e: Exception) {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Failed to save profile picture: ${e.message}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
                             }
+                        } else {
+                            Toast.makeText(
+                                requireContext(),
+                                "Failed to update profile: $message",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
-                    } else {
-                        Toast.makeText(requireContext(), "Failed to update profile: $message", Toast.LENGTH_SHORT).show()
                     }
-                }
-            )
-        } else {
-            Toast.makeText(requireContext(), "No image selected", Toast.LENGTH_SHORT).show()
+                )
+            } else {
+                Toast.makeText(requireContext(), "No image selected", Toast.LENGTH_SHORT).show()
+            }
         }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -59,7 +59,8 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.signupButton.setOnClickListener {
-            Toast.makeText(this, "Pendaftaran diproses, mohon tunggu....", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Pendaftaran diproses, mohon tunggu....", Toast.LENGTH_SHORT)
+                .show()
             val nama = binding.nameEditText.text.toString()
             val username = binding.usernameEditText.text.toString()
             val email = binding.emailEditText.text.toString()
@@ -70,10 +71,20 @@ class RegisterActivity : AppCompatActivity() {
                 nama.isEmpty() -> binding.nameEditText.error = "Nama tidak boleh kosong"
                 username.isEmpty() -> binding.usernameEditText.error = "Username tidak boleh kosong"
                 !isEmailValid(email) -> binding.emailEditText.error = "Email tidak valid"
-                password.length < 8 -> binding.passwordEditText.error = "Password minimal 8 karakter"
-                password_confirm != password -> binding.confirmpasswordEditText.error = "Password tidak cocok"
+                password.length < 8 -> binding.passwordEditText.error =
+                    "Password minimal 8 karakter"
+
+                password_confirm != password -> binding.confirmpasswordEditText.error =
+                    "Password tidak cocok"
+
                 else -> {
-                    viewModel.register(nama, username, email, password, password_confirm) { success, message ->
+                    viewModel.register(
+                        nama,
+                        username,
+                        email,
+                        password,
+                        password_confirm
+                    ) { success, message ->
                         if (success) {
                             Toast.makeText(this, "Berhasil dikirim", Toast.LENGTH_SHORT).show()
                             navigateToLogin()

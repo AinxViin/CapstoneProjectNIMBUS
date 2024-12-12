@@ -11,6 +11,7 @@ class DetailPlanViewModel(private val userRepository: UserRepository) : ViewMode
         val destinations = userRepository.getPlanDestinations(planId)
         emit(destinations)
     }
+
     suspend fun deleteDestination(planId: Int, wisataId: Int): Boolean {
         return userRepository.deleteDestination(planId, wisataId)
     }

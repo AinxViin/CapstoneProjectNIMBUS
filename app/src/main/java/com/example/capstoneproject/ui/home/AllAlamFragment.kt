@@ -51,7 +51,8 @@ class AllAlamFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val itemDecoration = ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.recycler_view_spacing))
+        val itemDecoration =
+            ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.recycler_view_spacing))
         binding.rvAllCategories.addItemDecoration(itemDecoration)
         binding.rvAllCategories.layoutManager = LinearLayoutManager(requireContext())
         wisataAlamAdapter = WisataAlamAdapter(emptyList()) // Initial empty list
@@ -63,7 +64,8 @@ class AllAlamFragment : Fragment() {
             val wisataId = wisata.id
 
             // Menggunakan NavController untuk berpindah ke DetailWisataFragment dan mengirimkan ID
-            val action = AllAlamFragmentDirections.actionAllAlamFragmentToDetailWisataFragment(wisataId)
+            val action =
+                AllAlamFragmentDirections.actionAllAlamFragmentToDetailWisataFragment(wisataId)
             findNavController().navigate(action)
         }
     }

@@ -18,13 +18,11 @@ import com.example.capstoneproject.response.RegisterResponse
 import com.example.capstoneproject.response.UpdateResponse
 import com.example.capstoneproject.response.UserResponse
 import com.example.capstoneproject.response.WisataAlamResponse
-import com.example.capstoneproject.response.WisataCategoryResponse
 import com.example.capstoneproject.response.WisataCategoryResponseItem
 import com.example.capstoneproject.response.WisataHiburanResponse
 import com.example.capstoneproject.response.WisataResponse
 import com.example.capstoneproject.response.WisataSeniResponse
 import com.example.capstoneproject.response.WisataToPlanResponse
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE

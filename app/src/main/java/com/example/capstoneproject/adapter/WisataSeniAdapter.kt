@@ -8,7 +8,8 @@ import com.example.capstoneproject.R
 import com.example.capstoneproject.data.WisataDetail
 import com.example.capstoneproject.databinding.ItemAllwisataBinding
 
-class WisataSeniAdapter (private var wisataList: List<WisataDetail>) : RecyclerView.Adapter<WisataSeniAdapter.WisataSeniViewHolder>() {
+class WisataSeniAdapter(private var wisataList: List<WisataDetail>) :
+    RecyclerView.Adapter<WisataSeniAdapter.WisataSeniViewHolder>() {
 
     private var onItemClickListener: ((WisataDetail) -> Unit)? = null
 
@@ -17,7 +18,8 @@ class WisataSeniAdapter (private var wisataList: List<WisataDetail>) : RecyclerV
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WisataSeniViewHolder {
-        val binding = ItemAllwisataBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemAllwisataBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return WisataSeniViewHolder(binding)
     }
 
@@ -28,7 +30,8 @@ class WisataSeniAdapter (private var wisataList: List<WisataDetail>) : RecyclerV
 
     override fun getItemCount(): Int = wisataList.size
 
-    inner class WisataSeniViewHolder(private val binding: ItemAllwisataBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class WisataSeniViewHolder(private val binding: ItemAllwisataBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(wisata: WisataDetail) {
             binding.tvWisataTitle.text = wisata.nama
 

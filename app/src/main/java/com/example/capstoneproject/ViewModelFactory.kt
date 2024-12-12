@@ -9,7 +9,8 @@ import com.example.capstoneproject.ui.login.LoginViewModel
 import com.example.capstoneproject.ui.profile.ProfileViewModel
 import com.example.capstoneproject.ui.register.RegisterViewModel
 
-class ViewModelFactory private constructor(private val repository: UserRepository) : ViewModelProvider.Factory{
+class ViewModelFactory private constructor(private val repository: UserRepository) :
+    ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -17,15 +18,19 @@ class ViewModelFactory private constructor(private val repository: UserRepositor
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(repository) as T
             }
+
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(repository) as T
             }
+
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(repository) as T
             }
+
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(repository) as T
             }
+
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
@@ -33,6 +38,7 @@ class ViewModelFactory private constructor(private val repository: UserRepositor
     companion object {
         @Volatile
         private var INSTANCE: ViewModelFactory? = null
+
         @JvmStatic
         fun getInstance(context: Context): ViewModelFactory {
             if (INSTANCE == null) {
