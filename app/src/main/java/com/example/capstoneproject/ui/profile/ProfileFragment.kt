@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.capstoneproject.R
+import com.example.capstoneproject.ViewModelFactory
 import com.example.capstoneproject.data.pref.UserPreference
 import com.example.capstoneproject.data.pref.dataStore
 import com.example.capstoneproject.databinding.FragmentProfileBinding

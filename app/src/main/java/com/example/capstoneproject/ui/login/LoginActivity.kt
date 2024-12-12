@@ -10,6 +10,8 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.capstoneproject.MainActivity
+import com.example.capstoneproject.ViewModelFactory
 import com.example.capstoneproject.databinding.ActivityLoginBinding
 import com.example.capstoneproject.ui.register.RegisterActivity
 
