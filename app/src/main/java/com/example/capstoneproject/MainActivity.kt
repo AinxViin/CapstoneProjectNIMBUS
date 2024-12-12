@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set up the Toolbar as the ActionBar
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         userPreference = UserPreference.getInstance(applicationContext.dataStore)
         checkSession()

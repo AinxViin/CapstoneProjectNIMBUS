@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.capstoneproject.R
@@ -46,6 +47,8 @@ class SelectPlanFragment : Fragment() {
 
         val args: SelectPlanFragmentArgs by navArgs()
         wisataId = args.wisataId
+
+        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         val itemDecoration = ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.recycler_view_spacing))
         binding.rvSelectPlans.addItemDecoration(itemDecoration)
