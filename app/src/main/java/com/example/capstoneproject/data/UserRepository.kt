@@ -5,6 +5,7 @@ import com.example.capstoneproject.data.pref.UserPreference
 import com.example.capstoneproject.request.AddPlanRequest
 import com.example.capstoneproject.request.LoginRequest
 import com.example.capstoneproject.request.RegisterRequest
+import com.example.capstoneproject.request.RekomendasiRequest
 import com.example.capstoneproject.request.UpdateRequest
 import com.example.capstoneproject.request.WisataToPlanRequest
 import com.example.capstoneproject.response.ErrorResponse
@@ -205,6 +206,14 @@ class UserRepository private constructor(
             }
         } catch (e: Exception) {
             emptyList()
+        }
+    }
+
+    suspend fun postRekomendasi(request: RekomendasiRequest): List<WisataResponse> {
+        return try {
+            apiService.postRekomendasiWisata(request)
+        } catch (e: Exception) {
+            throw Exception("Failed to add Wisata : ${e.message}")
         }
     }
 

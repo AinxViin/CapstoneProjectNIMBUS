@@ -1,24 +1,21 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="12dp"
     android:background="@color/green">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="12dp">
+        android:layout_height="wrap_content">
 
-        <!-- Thumbnail Image -->
         <ImageView
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:layout_marginBottom="16dp" />
+            android:scaleType="centerCrop"/>
 
-        <!-- Nama Wisata -->
         <TextView
             android:id="@+id/namaWisata"
             android:text="Nama Wisata"
@@ -27,173 +24,175 @@
             android:textSize="20sp"
             android:fontFamily="sans-serif-medium"
             android:textColor="@color/cream"
-            android:layout_marginBottom="8dp"/>
+            android:paddingBottom="8dp"/>
 
-        <!-- Provinsi -->
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp">
+
             <TextView
-                android:text="Provinsi :"
-                android:textColor="@color/cream"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"/>
+                android:text="Provinsi : "
+                android:textColor="@color/cream"/>
+
             <TextView
                 android:id="@+id/provinsi"
                 android:text="Provinsi"
-                android:textColor="@color/cream"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:textColor="@color/cream"/>
+
         </LinearLayout>
 
-        <!-- Kategori Wisata -->
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp">
+
             <TextView
-                android:text="Kategori :"
-                android:textColor="@color/cream"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"/>
+                android:text="Kategori: "
+                android:textColor="@color/cream"/>
+
             <TextView
                 android:id="@+id/kategoriWisata"
                 android:text="Kategori Wisata"
-                android:textColor="@color/cream"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:textColor="@color/cream"/>
+
         </LinearLayout>
 
-        <!-- Review -->
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp">
+
             <TextView
-                android:text="Review :"
-                android:textColor="@color/cream"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"/>
+                android:text="Review : "
+                android:textColor="@color/cream"/>
+
             <TextView
                 android:id="@+id/reviewTotal"
                 android:text="Total Reviews"
-                android:textColor="@color/cream"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:textColor="@color/cream"/>
+
         </LinearLayout>
 
-        <!-- Website -->
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp">
+
             <TextView
-                android:text="Website :"
-                android:textColor="@color/cream"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"/>
+                android:text="Website : "
+                android:textColor="@color/cream"/>
+
             <TextView
                 android:id="@+id/website"
                 android:text="Website"
-                android:textColor="@color/cream"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:textColor="@color/cream"/>
+
         </LinearLayout>
 
-        <!-- Google Link -->
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp">
+
             <TextView
-                android:text="Link :"
-                android:textColor="@color/cream"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"/>
+                android:text="Link : "
+                android:textColor="@color/cream"/>
+
             <TextView
                 android:id="@+id/googleLink"
                 android:text="Google Link"
-                android:textColor="@color/cream"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:textColor="@color/cream"/>
+
         </LinearLayout>
 
-        <!-- Latitude -->
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp">
+
             <TextView
-                android:text="Latitude :"
-                android:textColor="@color/cream"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"/>
+                android:text="Latitude: "
+                android:textColor="@color/cream"/>
+
             <TextView
                 android:id="@+id/latitude"
                 android:text="Latitude"
-                android:textColor="@color/cream"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:textColor="@color/cream"/>
+
         </LinearLayout>
 
-        <!-- Longitude -->
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp">
+
             <TextView
-                android:text="Longitude :"
-                android:textColor="@color/cream"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"/>
+                android:text="Longitude"
+                android:textColor="@color/cream"/>
+
             <TextView
                 android:id="@+id/longitude"
                 android:text="Longitude"
-                android:textColor="@color/cream"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:textColor="@color/cream"/>
+
         </LinearLayout>
 
-        <!-- Progress Bar -->
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="gone"
-            android:layout_marginBottom="16dp"/>
+            android:visibility="gone" />
 
-        <!-- Add to Plan Button -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rekomendasi Wisata Serupa"
+            android:textSize="25sp"
+            android:textColor="@color/cream"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewRekomendasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <Button
             android:id="@+id/btnAddToPlan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tambahkan ke rencana"
             android:textColor="@color/green"
-            android:backgroundTint="@color/cream"
-            android:layout_gravity="center"/>
+            android:backgroundTint="@color/cream"/>
 
     </LinearLayout>
 </ScrollView>

@@ -48,6 +48,13 @@
             app:destination="@id/navigation_home"
             app:popUpTo="@id/navigation_home"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_detailFragment_to_detailWisataFragment"
+            app:destination="@+id/DetailWisataFragment">
+            <argument
+                android:name="wisataId"
+                app:argType="integer" />
+        </action>
     </fragment>
 
     <fragment

@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.datastore.preferences.preferencesDataStore
-import com.example.capstoneproject.R
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.capstoneproject.data.pref.UserPreference
+import com.example.capstoneproject.adapter.RekomendasiAdapter
 import com.example.capstoneproject.databinding.FragmentDetailWisataBinding
+import com.example.capstoneproject.di.Injection
+import com.example.capstoneproject.request.RekomendasiRequest
 
 val Context.dataStore by preferencesDataStore(name = "session")
 
@@ -24,7 +26,7 @@ class DetailWisataFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailWisataBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -35,14 +37,10 @@ class DetailWisataFragment : Fragment() {
         // Mengambil parameter wisataId dari argumen fragment
         val wisataId = arguments?.getInt("wisataId") ?: return
 
-        // Mengambil UserPreference menggunakan DataStore dari Context
-        val userPreference = UserPreference.getInstance(requireContext().dataStore)
-
-        // Membuat factory untuk ViewModel
-        val factory = DetailWisataViewModelFactory(userPreference)
-
+        val factory = Injection.provideDetailWisataViewModelFactory(requireContext())
         // Menggunakan factory untuk mendapatkan ViewModel
-        viewModel = ViewModelProvider(this, factory).get(DetailWisataViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory)[DetailWisataViewModel::class.java]
+
 
         // Memanggil ViewModel untuk mengambil data wisata berdasarkan ID
         viewModel.fetchDetailWisata(wisataId)
@@ -67,9 +65,29 @@ class DetailWisataFragment : Fragment() {
             binding.latitude.text = detail.latitude
             binding.longitude.text = detail.longitude
 
+            viewModel.postRekomendasiWisata(
+                request = RekomendasiRequest(
+                    selectedPlace = detail.nama
+                )
+            )
+
             Glide.with(requireContext())
                 .load(detail.thumbnail)
                 .into(binding.thumbnail)
+        }
+
+        val rekomendasiAdapter = RekomendasiAdapter { wisataDataId ->
+            val action = DetailWisataFragmentDirections.actionDetailFragmentToDetailWisataFragment(wisataDataId)
+            findNavController().navigate(action)
+        }
+        binding.recyclerViewRekomendasi.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = rekomendasiAdapter
+        }
+
+        viewModel.rekomendasiWisata.observe(viewLifecycleOwner) { rekomendasi ->
+            rekomendasiAdapter.submitList(rekomendasi)
+            print(rekomendasi)
         }
     }
 }

@@ -3,6 +3,7 @@ package com.example.capstoneproject.retrofit
 import com.example.capstoneproject.request.AddPlanRequest
 import com.example.capstoneproject.request.LoginRequest
 import com.example.capstoneproject.request.RegisterRequest
+import com.example.capstoneproject.request.RekomendasiRequest
 import com.example.capstoneproject.request.UpdateRequest
 import com.example.capstoneproject.request.WisataToPlanRequest
 import com.example.capstoneproject.response.AddPlanResponse
@@ -97,4 +98,7 @@ interface ApiService {
 
     @GET("user/tempat-wisata/category/seni_dan_budaya")
     suspend fun getWisataSeni(): Response<WisataSeniResponse>
+
+    @POST("user/recommend-destinations")
+    suspend fun postRekomendasiWisata(@Body request: RekomendasiRequest): List<WisataResponse>
 }
