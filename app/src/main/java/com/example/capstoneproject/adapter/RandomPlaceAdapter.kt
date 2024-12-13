@@ -2,6 +2,7 @@ package com.example.capstoneproject.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.capstoneproject.MainActivity
 import com.example.capstoneproject.R
 import com.example.capstoneproject.response.RandomPlacesItem
 
@@ -32,7 +34,19 @@ class RandomPlaceAdapter : RecyclerView.Adapter<RandomPlaceAdapter.WisataViewHol
 
     override fun onBindViewHolder(holder: WisataViewHolder, position: Int) {
         holder.bind(wisataList[position])
+        holder.itemView.setOnClickListener {
+            val wisataId = wisataList[position].tempatWisata?.id
+
+            if (wisataId != null) {
+                val intent = Intent(holder.itemView.context, MainActivity::class.java)
+
+                intent.putExtra("wisataId", wisataId)
+
+                holder.itemView.context.startActivity(intent)
+            }
+        }
     }
+
 
     override fun getItemCount(): Int = wisataList.size
 
@@ -163,6 +177,4 @@ class RandomPlaceAdapter : RecyclerView.Adapter<RandomPlaceAdapter.WisataViewHol
         }
     }
 
-
-    fun Int.toDp(context: Context): Int = (this * context.resources.displayMetrics.density).toInt()
 }

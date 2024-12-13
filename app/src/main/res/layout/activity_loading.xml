@@ -11,14 +11,14 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
         android:layout_margin="16dp"
-        android:visibility="visible"
+        android:indeterminate="true"
         android:outlineSpotShadowColor="@color/cream"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_loading_message"
@@ -26,9 +26,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/loading_message"
-        android:textColor="@color/cream"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintTop_toBottomOf="@id/progressBar"
+        android:textColor="@color/cream"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/progressBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

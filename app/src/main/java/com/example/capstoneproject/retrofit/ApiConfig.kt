@@ -6,7 +6,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 object ApiConfig {
     private const val BASE_URL = "https://nimbus-443014235398.asia-southeast2.run.app/api/"

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp"
-    android:background="@color/green">
+    android:background="@color/green"
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,49 +23,49 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_profile_placeholder"
-                android:contentDescription="Profile Image" />
+                android:contentDescription="Profile Image"
+                android:src="@drawable/ic_profile_placeholder" />
 
             <!-- Nama dan Email -->
             <TextView
                 android:id="@+id/nameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="Nama User"
+                android:textColor="@color/cream"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/cream" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/emailTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="email@example.com"
-                android:textSize="16sp"
-                android:textColor="@color/cream"
                 android:layout_marginTop="4dp"
-                android:padding="8dp"/>
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="email@example.com"
+                android:textColor="@color/cream"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <!-- Daftar Opsi Edit -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
 
             <!-- Edit Nama -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="7dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/outline_box"
-                android:layout_marginBottom="8dp">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="7dp">
 
                 <TextView
                     android:id="@+id/tv_name"
@@ -73,29 +73,29 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Nama"
-                    android:textSize="16sp"
-                    android:textColor="@color/cream" />
+                    android:textColor="@color/cream"
+                    android:textSize="16sp" />
 
                 <ImageButton
                     android:id="@+id/changeNameButton"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
                     android:background="?attr/selectableItemBackground"
-                    android:src="@drawable/ic_edit"
-                    app:tint="@color/cream"
                     android:contentDescription="Edit Nama"
-                    android:layout_marginStart="8dp" />
+                    android:src="@drawable/ic_edit"
+                    app:tint="@color/cream" />
             </LinearLayout>
 
             <!-- Edit Email -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="7dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/outline_box"
-                android:layout_marginBottom="8dp">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="7dp">
 
                 <TextView
                     android:id="@+id/tv_email"
@@ -103,28 +103,28 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Email"
-                    android:textSize="16sp"
-                    android:textColor="@color/cream" />
+                    android:textColor="@color/cream"
+                    android:textSize="16sp" />
 
                 <ImageButton
                     android:id="@+id/changeEmailButton"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
                     android:background="?attr/selectableItemBackground"
-                    android:src="@drawable/ic_edit"
-                    app:tint="@color/cream"
                     android:contentDescription="Edit Email"
-                    android:layout_marginStart="8dp" />
+                    android:src="@drawable/ic_edit"
+                    app:tint="@color/cream" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="7dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/outline_box"
-                android:layout_marginBottom="5dp">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="7dp">
 
                 <TextView
                     android:id="@+id/tv_password"
@@ -132,18 +132,18 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Password"
-                    android:textSize="16sp"
-                    android:textColor="@color/cream" />
+                    android:textColor="@color/cream"
+                    android:textSize="16sp" />
 
                 <ImageButton
                     android:id="@+id/changePasswordButton"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
                     android:background="?attr/selectableItemBackground"
-                    android:src="@drawable/ic_edit"
-                    app:tint="@color/cream"
                     android:contentDescription="Edit Password"
-                    android:layout_marginStart="8dp" />
+                    android:src="@drawable/ic_edit"
+                    app:tint="@color/cream" />
             </LinearLayout>
         </LinearLayout>
 
@@ -153,8 +153,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:backgroundTint="@color/cream"
             android:text="Keluar"
-            android:textColor="@color/green"
-            android:backgroundTint="@color/cream" />
+            android:textColor="@color/green" />
     </LinearLayout>
 </ScrollView>

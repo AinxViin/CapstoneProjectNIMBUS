@@ -39,7 +39,6 @@ class DetailWisataFragment : Fragment() {
 
         // Mengambil parameter wisataId dari argumen fragment
         val wisataId = arguments?.getInt("wisataId") ?: return
-
         val factory = Injection.provideDetailWisataViewModelFactory(requireContext())
         // Menggunakan factory untuk mendapatkan ViewModel
         viewModel = ViewModelProvider(this, factory)[DetailWisataViewModel::class.java]

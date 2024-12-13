@@ -1,10 +1,9 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="#ededed"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:background="#ededed">
+    android:padding="8dp">
 
     <!-- Image Section -->
     <FrameLayout
@@ -16,9 +15,8 @@
             android:id="@+id/ivCategoryImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:contentDescription="Category Image"/>
-
+            android:contentDescription="Category Image"
+            android:scaleType="centerCrop" />
     </FrameLayout>
 
     <!-- Text Section -->
@@ -27,6 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textSize="20sp"
-        android:textColor="#000000"/>
+        android:textColor="#000000"
+        android:textSize="20sp" />
 </LinearLayout>

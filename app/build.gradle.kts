@@ -61,7 +61,7 @@ dependencies {
 
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
-    implementation (libs.circleimageview)
+    implementation(libs.circleimageview)
 
     //retrofit
     implementation(libs.retrofit)
@@ -70,11 +70,11 @@ dependencies {
     //datastore
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.datastore.core)
-    implementation (libs.androidx.datastore)
+    implementation(libs.androidx.datastore)
     implementation(libs.kotlinx.coroutines.android)
 
     //shape
-    implementation (libs.material)
+    implementation(libs.material)
 
 
 }

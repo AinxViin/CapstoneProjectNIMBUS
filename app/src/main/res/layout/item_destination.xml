@@ -1,5 +1,4 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -9,29 +8,29 @@
         android:id="@+id/ivDestinationImage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="@string/destination_image" />
+        android:contentDescription="@string/destination_image"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/tvDestinationName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="8dp"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:paddingTop="8dp" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvDestinationAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:paddingTop="4dp" />
+        android:paddingTop="4dp"
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/delete"
         android:layout_gravity="end"
-        android:padding="8dp" />
+        android:padding="8dp"
+        android:text="@string/delete" />
 </LinearLayout>

@@ -76,6 +76,8 @@ class UserRepository private constructor(
 
     suspend fun updateUser(updateRequest: UpdateRequest): UpdateResponse {
         return try {
+            val userData = userPreference.getSession().firstOrNull()
+            val token = userData?.token ?: throw Exception("User token is missing")
             apiService.updateInfo(updateRequest)
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()

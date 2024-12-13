@@ -24,7 +24,8 @@ class WisataCategoryAdapter : RecyclerView.Adapter<WisataCategoryAdapter.Provinc
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProvinceViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_province, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_province, parent, false)
         return ProvinceViewHolder(view)
     }
 

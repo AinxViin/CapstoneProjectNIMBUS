@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
 
     private fun setupViewModel() {
         val factory = Injection.provideViewModelFactory(requireContext())
-        viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
         viewModel.getProvinces()
         viewModel.getWisata() // Panggil fungsi untuk mendapatkan data wisata
     }

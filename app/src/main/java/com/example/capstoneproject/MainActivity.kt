@@ -26,11 +26,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Set up the Toolbar as the ActionBar
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         userPreference = UserPreference.getInstance(applicationContext.dataStore)
         checkSession()
+
+        val wisataId = intent.getIntExtra("wisataId", -1)
 
         val navView: BottomNavigationView = binding.navView
 
@@ -50,8 +52,15 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_explore
             )
         )
+        // Link the Toolbar with the NavController
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        if (wisataId != -1) {
+            val bundle = Bundle()
+            bundle.putInt("wisataId", wisataId)
+            navController.navigate(R.id.action_homeFragment_to_detailWisataFragment, bundle)
+        }
     }
 
     private fun checkSession() {

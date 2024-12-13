@@ -1,6 +1,6 @@
 package com.example.capstoneproject.request
 
-class UpdateRequest (
+class UpdateRequest(
     val email: String? = null,
     val password: String? = null,
     val nama: String? = null,

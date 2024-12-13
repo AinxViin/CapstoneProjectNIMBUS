@@ -1,6 +1,6 @@
 package com.example.capstoneproject.request
 
-class LoginRequest (
+class LoginRequest(
     val email: String,
     val password: String
 )

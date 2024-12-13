@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -19,17 +19,17 @@
                 android:id="@+id/provinces_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="Pilih Provinsi"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
                     android:textColor="@color/green"
-                    android:gravity="center" />
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
 
                 <!-- Horizontal List for Provinces -->
                 <androidx.recyclerview.widget.RecyclerView
@@ -45,17 +45,17 @@
                 android:id="@+id/layout_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="Pilih Kategori Wisata"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
                     android:textColor="@color/green"
-                    android:gravity="center" />
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
 
                 <!-- Horizontal List for Provinces -->
                 <androidx.recyclerview.widget.RecyclerView
@@ -68,8 +68,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_marginTop="16dp"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <com.google.android.material.button.MaterialButton
@@ -77,9 +77,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
+                        android:backgroundTint="@color/green"
                         android:text="Kembali"
-                        app:cornerRadius="12dp"
-                        android:backgroundTint="@color/green"/>
+                        app:cornerRadius="12dp" />
 
                 </LinearLayout>
 

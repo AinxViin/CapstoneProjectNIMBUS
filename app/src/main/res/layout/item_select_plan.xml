@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:contentDescription="Category Image"
             android:scaleType="centerCrop"
-            android:src="@drawable/fotoplan"/>
+            android:src="@drawable/fotoplan" />
     </FrameLayout>
 
     <TextView

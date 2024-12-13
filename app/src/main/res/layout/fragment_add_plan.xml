@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#355E3B"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#355E3B">
+    android:padding="16dp">
 
     <!-- Title -->
     <TextView
         android:id="@+id/tvBottomSheetTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
         android:text="Buat Perencanaan"
-        android:textSize="18sp"
-        android:textStyle="bold"
         android:textColor="#FFFFFF"
-        android:paddingBottom="16dp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <!-- Input Field -->
     <EditText
         android:id="@+id/etPlanName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Misal : Liburan setelah natal"
         android:padding="12dp"
         android:textColor="#FFFFFF"
-        android:textColorHint="#90EE90"
-        android:layout_marginBottom="16dp"/>
+        android:textColorHint="#90EE90" />
 
     <!-- Create Button -->
     <Button

@@ -24,11 +24,11 @@ class DetailWisataViewModel(
     private val _rekomendasiWisata = MutableLiveData<List<WisataResponse>>()
     val rekomendasiWisata: LiveData<List<WisataResponse>> = _rekomendasiWisata
 
+
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> get() = _isLoading
 
     private val _errorMessage = MutableLiveData<String>()
-    val errorMessage: LiveData<String> get() = _errorMessage
 
     private val apiService = ApiConfig.apiService(userPreference)
 

@@ -9,7 +9,6 @@ import okhttp3.CookieJar
 import okhttp3.HttpUrl
 
 class CustomCookieJar(private val userPreference: UserPreference) : CookieJar {
-    private val cookieStore: MutableMap<String, MutableList<Cookie>> = mutableMapOf()
 
     override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {
         val cookieString = cookies.joinToString("; ") { it.toString() }

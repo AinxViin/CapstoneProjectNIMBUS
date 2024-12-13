@@ -5,7 +5,6 @@ import com.example.capstoneproject.data.UserRepository
 import com.example.capstoneproject.data.pref.UserPreference
 import com.example.capstoneproject.data.pref.dataStore
 import com.example.capstoneproject.retrofit.ApiConfig
-import com.example.capstoneproject.ui.home.DetailWisataViewModel
 import com.example.capstoneproject.ui.home.DetailWisataViewModelFactory
 import com.example.capstoneproject.ui.home.HomeViewModelFactory
 

@@ -99,4 +99,6 @@ interface ApiService {
 
     @POST("user/recommend-destinations")
     suspend fun postRekomendasiWisata(@Body request: RekomendasiRequest): List<WisataResponse>
+
+
 }

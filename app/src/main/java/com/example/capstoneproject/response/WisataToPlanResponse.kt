@@ -1,6 +1,6 @@
 package com.example.capstoneproject.response
 
-data class WisataToPlanResponse (
+data class WisataToPlanResponse(
     val id: Int,
     val tanggal_perencanaan: String,
     val tempatWisata_id: Int,
