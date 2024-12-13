@@ -59,17 +59,14 @@ class RandomPlaceAdapter : RecyclerView.Adapter<RandomPlaceAdapter.WisataViewHol
 
         @SuppressLint("SetTextI18n", "DefaultLocale")
         fun bind(wisata: RandomPlacesItem) {
-            // Clear any existing star views to prevent duplication
             llRating.removeAllViews()
 
-            // Retrieve the predictedRating as a Double? and convert to Int
             val ratingDouble: Double? = wisata.tempatWisata?.predictedRating
             val ratingInt: Int = ratingDouble?.toInt() ?: 0
 
-            // Define the maximum number of stars
             val maxStars = 5
             val displayRating =
-                ratingInt.coerceIn(0, maxStars) // Ensure rating is between 0 and maxStars
+                ratingInt.coerceIn(0, maxStars)
             val wisataAlamImage = listOf(
                 R.drawable.alam_1,
                 R.drawable.alam_2,
@@ -98,7 +95,6 @@ class RandomPlaceAdapter : RecyclerView.Adapter<RandomPlaceAdapter.WisataViewHol
 
             val category = wisata.tempatWisata?.kategori
 
-            // Bind the textual data
             namaDestinasi.text = wisata.tempatWisata?.namaDestinasi ?: "Unknown"
             letakProvinsi.text = "Provinsi : ${wisata.tempatWisata?.letakProvinsi ?: "Unknown"}"
             kategori.text = "Kategori : ${wisata.tempatWisata?.kategori ?: "Unknown"}"
@@ -123,46 +119,38 @@ class RandomPlaceAdapter : RecyclerView.Adapter<RandomPlaceAdapter.WisataViewHol
                     .into(ivCategoryPicture)
             }
 
-            // Check if predictedRating is available
             if (ratingDouble != null) {
-                // Add filled star ImageViews based on displayRating
                 for (i in 1..displayRating) {
                     val star = createStarImageView(itemView.context, filled = true)
                     llRating.addView(star)
                 }
 
-                // Optionally, add empty star ImageViews to reach maxStars
                 val emptyStars = maxStars - displayRating
                 for (i in 1..emptyStars) {
                     val emptyStar = createStarImageView(itemView.context, filled = false)
                     llRating.addView(emptyStar)
                 }
 
-                // Make sure the rating layout is visible
                 llRating.visibility = View.VISIBLE
             } else {
-                // Handle "N/A" case: hide the rating layout or show a default state
                 llRating.visibility = View.GONE
             }
         }
 
         private fun createStarImageView(context: Context, filled: Boolean): ImageView {
             val star = ImageView(context).apply {
-                // Set the appropriate drawable based on whether the star is filled
                 setImageResource(
                     if (filled) R.drawable.baseline_star_rate_24
                     else R.drawable.baseline_star_border_24
                 )
 
-                // Define layout parameters (size and margin)
                 layoutParams = LinearLayout.LayoutParams(
                     dpToPx(24, context),
                     dpToPx(24, context)
                 ).apply {
-                    marginEnd = dpToPx(4, context) // Space between stars
+                    marginEnd = dpToPx(4, context)
                 }
 
-                // Optional: Set content description for accessibility
                 contentDescription = if (filled) "Filled Star" else "Empty Star"
             }
             return star

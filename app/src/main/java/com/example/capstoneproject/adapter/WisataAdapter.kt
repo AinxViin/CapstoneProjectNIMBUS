@@ -41,12 +41,11 @@ class WisataAdapter(private val onItemClick: (Int) -> Unit) :
             title.text = wisata.nama
 
             Glide.with(itemView.context)
-                .load(wisata.thumbnail) // Gambar utama dari data wisata
-                .placeholder(R.drawable.placeholder) // Placeholder saat gambar belum dimuat
+                .load(wisata.thumbnail)
+                .placeholder(R.drawable.placeholder)
                 .into(thumbnail)
 
             itemView.setOnClickListener {
-                // Panggil onItemClick dengan ID wisata saat item diklik
                 onItemClick(wisata.id)
             }
         }

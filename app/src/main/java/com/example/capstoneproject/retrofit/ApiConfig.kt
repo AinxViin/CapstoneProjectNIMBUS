@@ -11,19 +11,16 @@ object ApiConfig {
     private const val BASE_URL = "https://nimbus-443014235398.asia-southeast2.run.app/api/"
 
     fun apiService(userPreference: UserPreference): ApiService {
-        // Create an HttpLoggingInterceptor to log API requests and responses
         val loggingInterceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY // Logs headers, body, etc.
+            level = HttpLoggingInterceptor.Level.BODY
         }
 
-        // Create an OkHttpClient and add the interceptor
         val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .cookieJar(CustomCookieJar(userPreference))
             .build()
 
 
-        // Create a Retrofit instance with the OkHttpClient
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(client)

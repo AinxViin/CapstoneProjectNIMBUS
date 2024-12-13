@@ -11,10 +11,8 @@ import com.example.capstoneproject.databinding.ItemAllwisataBinding
 class WisataAlamAdapter(private var wisataList: List<WisataDetail>) :
     RecyclerView.Adapter<WisataAlamAdapter.WisataAlamViewHolder>() {
 
-    // Tambahkan variabel listener untuk menangani klik
     private var onItemClickListener: ((WisataDetail) -> Unit)? = null
 
-    // Method untuk set listener klik item
     fun setOnItemClickListener(listener: (WisataDetail) -> Unit) {
         onItemClickListener = listener
     }
@@ -42,11 +40,9 @@ class WisataAlamAdapter(private var wisataList: List<WisataDetail>) :
                 .placeholder(R.drawable.placeholder)
                 .into(binding.ivWisataImage)
 
-            // Tambahkan log atau Toast untuk mengecek apakah klik terdeteksi
             binding.root.setOnClickListener {
-                // Tambahkan log atau Toast untuk memastikan klik terdeteksi
-                println("Item clicked: ${wisata.nama}")  // Debug log
-                onItemClickListener?.invoke(wisata) // Panggil listener ketika item diklik
+                println("Item clicked: ${wisata.nama}")
+                onItemClickListener?.invoke(wisata)
             }
         }
     }

@@ -3,14 +3,12 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <!-- Content LinearLayout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#EDEDED"
         android:orientation="vertical">
 
-        <!-- Horizontal List for Provinces -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +41,6 @@
             android:layout_gravity="center"
             android:visibility="gone" />
 
-        <!-- Category Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

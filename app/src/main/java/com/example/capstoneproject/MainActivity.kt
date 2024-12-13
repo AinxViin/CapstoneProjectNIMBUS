@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set up the Toolbar as the ActionBar
         setSupportActionBar(binding.toolbar)
 
         userPreference = UserPreference.getInstance(applicationContext.dataStore)
@@ -36,7 +35,6 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
-        // Get NavController from NavHostFragment
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
@@ -52,7 +50,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_explore
             )
         )
-        // Link the Toolbar with the NavController
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 

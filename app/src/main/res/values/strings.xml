@@ -7,7 +7,6 @@
     <string name="register2">Silahkan isi data berikut</string>
     <string name="loading_message">Mohon Tunggu...</string>
 
-    //Register Login
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
@@ -19,7 +18,6 @@
     <string name="register1">Daftar</string>
     <string name="title_signup_page">Lengkapi data berikut untuk pendaftaran</string>
 
-    //Navigasi
     <string name="title_profile">Account</string>
     <string name="title_home">Home</string>
     <string name="title_automatic">Automatic</string>
@@ -33,7 +31,6 @@
     <string name="lokasi">Lokasi</string>
 
     <string name="change_password">Ganti Password</string>
-    <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>

@@ -97,13 +97,13 @@ class UserRepository private constructor(
     }
 
     suspend fun getUserSession(): UserModel? {
-        return userPreference.getSession().firstOrNull() // Mengembalikan UserModel dari session
+        return userPreference.getSession().firstOrNull()
     }
 
     suspend fun getProvinces(): List<ProvinceResponse> {
         return withContext(Dispatchers.IO) {
             val response = apiService.getProvinces()
-            response // Assuming `getProvinces` returns a list of ProvinceResponse
+            response
         }
     }
 
@@ -127,7 +127,7 @@ class UserRepository private constructor(
 
     suspend fun addPlan(addPlanRequest: AddPlanRequest): Boolean {
         return try {
-            apiService.addPlan(addPlanRequest) // Langsung mengirim request ke API
+            apiService.addPlan(addPlanRequest)
             true
         } catch (e: Exception) {
             throw Exception("Failed to add plan: ${e.message}")

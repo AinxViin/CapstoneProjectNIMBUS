@@ -8,7 +8,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Title for Selecting Plan -->
         <TextView
             android:id="@+id/tvPlanTitle"
             android:layout_width="wrap_content"
@@ -19,7 +18,6 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <!-- RecyclerView for displaying plans -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSelectPlans"
             android:layout_width="match_parent"

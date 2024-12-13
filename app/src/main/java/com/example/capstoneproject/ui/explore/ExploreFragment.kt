@@ -49,16 +49,12 @@ class ExploreFragment : Fragment() {
     }
 
     private fun setupView() {
-        // Observe provinceId LiveData
         recommendationViewModel.provinceId.observe(viewLifecycleOwner) { provincesId ->
-            // Update visibility based on provinceId and categoryId
             provinceId = provincesId
             updateViewVisibility(provincesId, recommendationViewModel.categoryId.value)
         }
 
-        // Observe categoryId LiveData
         recommendationViewModel.categoryId.observe(viewLifecycleOwner) { categorysId ->
-            // Update visibility based on provinceId and categoryId
             categoryId = categorysId
             updateViewVisibility(recommendationViewModel.provinceId.value, categorysId)
         }
@@ -89,12 +85,10 @@ class ExploreFragment : Fragment() {
             adapter = categoryAdapter
         }
 
-        // Observer for provinces
         viewModel.provinces.observe(viewLifecycleOwner) { provinces ->
             provinceAdapter.submitList(provinces)
         }
 
-        // Observer for categories
         viewModel.categoryWisata.observe(viewLifecycleOwner) { categories ->
             categoryAdapter.submitList(categories)
         }

@@ -40,16 +40,13 @@ class DestinationAdapter : RecyclerView.Adapter<DestinationAdapter.DestinationVi
             destination: DestinationDetail,
             onDeleteClickListener: ((DestinationDetail) -> Unit)?
         ) {
-            // Set text
             binding.tvDestinationName.text = destination.tempatWisata.nama
             binding.tvDestinationAddress.text = destination.tempatWisata.alamat
 
-            // Load image using Glide
             Glide.with(binding.ivDestinationImage.context)
                 .load(destination.tempatWisata.thumbnail)
                 .into(binding.ivDestinationImage)
 
-            // Set delete button listener
             binding.btnDelete.setOnClickListener {
                 onDeleteClickListener?.invoke(destination)
             }

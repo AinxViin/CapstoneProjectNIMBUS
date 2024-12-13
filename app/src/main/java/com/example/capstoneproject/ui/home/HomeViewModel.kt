@@ -12,27 +12,21 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    // LiveData untuk provinsi
     private val _provinces = MutableLiveData<List<ProvinceResponse>>()
     val provinces: LiveData<List<ProvinceResponse>> = _provinces
 
-    // LiveData untuk wisata alam
     private val _wisataAlam = MutableLiveData<List<WisataResponse>>()
     val wisataAlam: LiveData<List<WisataResponse>> = _wisataAlam
 
-    // LiveData untuk seni dan budaya
     private val _wisataBudaya = MutableLiveData<List<WisataResponse>>()
     val wisataBudaya: LiveData<List<WisataResponse>> = _wisataBudaya
 
-    // LiveData untuk wisata hiburan
     private val _wisataHiburan = MutableLiveData<List<WisataResponse>>()
     val wisataHiburan: LiveData<List<WisataResponse>> = _wisataHiburan
 
-    // LiveData untuk kategori
     private val _categoryWisata = MutableLiveData<List<WisataCategoryResponseItem>>()
     val categoryWisata: LiveData<List<WisataCategoryResponseItem>> = _categoryWisata
 
-    // LiveData untuk loading dan error
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 

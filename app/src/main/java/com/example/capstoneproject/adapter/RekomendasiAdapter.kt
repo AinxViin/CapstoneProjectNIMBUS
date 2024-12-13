@@ -39,12 +39,11 @@ class RekomendasiAdapter(private val onItemClick: (Int) -> Unit) :
 
         fun bind(wisata: WisataResponse, onItemClick: (Int) -> Unit) {
             Glide.with(itemView.context)
-                .load(wisata.thumbnail) // Gambar utama dari data wisata
-                .placeholder(R.drawable.placeholder) // Placeholder saat gambar belum dimuat
+                .load(wisata.thumbnail)
+                .placeholder(R.drawable.placeholder)
                 .into(thumbnail)
 
             itemView.setOnClickListener {
-                // Panggil onItemClick dengan ID wisata saat item diklik
                 onItemClick(wisata.id)
             }
         }

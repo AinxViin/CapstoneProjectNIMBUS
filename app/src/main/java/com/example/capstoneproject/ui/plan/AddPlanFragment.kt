@@ -19,7 +19,6 @@ class AddPlanFragment : BottomSheetDialogFragment() {
     private lateinit var etPlanName: EditText
     private lateinit var btnCreatePlan: Button
 
-    // Initialize ViewModel with a Factory
     private val addPlanViewModel: AddPlanViewModel by viewModels {
         AddPlanViewModelFactory(Injection.provideRepository(requireContext()))
     }

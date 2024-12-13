@@ -28,16 +28,14 @@ class PlanFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Mengamati perubahan daftar rencana
         lifecycleScope.launchWhenStarted {
             planViewModel.plans.collect { plans ->
-                if (plans.isNotEmpty() && isAdded) {  // Pastikan fragment ter-attach
+                if (plans.isNotEmpty() && isAdded) {
                     findNavController().navigate(R.id.action_navigation_plan_to_addedPlanFragment)
                 }
             }
         }
 
-        // Memanggil fungsi untuk memuat daftar rencana
         planViewModel.fetchPlans()
 
         val btnManual: Button = view.findViewById(R.id.btnManual)

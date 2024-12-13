@@ -10,18 +10,15 @@ import kotlinx.coroutines.launch
 
 class PlanViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    // Mendeklarasikan StateFlow dengan tipe yang benar
     private val _plans = MutableStateFlow<List<PlanResponse>>(emptyList())
     val plans: StateFlow<List<PlanResponse>> get() = _plans
 
     fun fetchPlans() {
         viewModelScope.launch {
             try {
-                // Mendapatkan daftar rencana dari repository
                 val planList = userRepository.getUserPlans()
                 _plans.value = planList
             } catch (e: Exception) {
-                // Mengatur nilai _plans menjadi daftar kosong jika terjadi kesalahan
                 _plans.value = emptyList()
             }
         }

@@ -38,16 +38,13 @@ class DetailPlanFragment : Fragment() {
         binding.rvDestinations.layoutManager = LinearLayoutManager(requireContext())
         binding.rvDestinations.adapter = adapter
 
-        // Ambil ID rencana dari argument
         val planId = arguments?.getInt("planId") ?: return
 
-        // Set delete listener
         adapter.setOnDeleteClickListener { destination ->
             lifecycleScope.launch {
                 try {
                     val success = viewModel.deleteDestination(planId, destination.id)
                     if (success) {
-                        // Remove item from adapter
                         adapter.submitList(adapter.destinations.filter { it.id != destination.id })
                     }
                 } catch (e: Exception) {
@@ -56,7 +53,6 @@ class DetailPlanFragment : Fragment() {
             }
         }
 
-        // Ambil data destinasi
         fetchDestinations(planId)
     }
 
@@ -66,11 +62,9 @@ class DetailPlanFragment : Fragment() {
                 val destinationDetails = planDestinations.flatMap { it.tw_perencanaan_manual }
 
                 if (destinationDetails.isEmpty()) {
-                    // Tampilkan pesan kosong
                     binding.tvEmptyMessage.visibility = View.VISIBLE
                     binding.rvDestinations.visibility = View.GONE
                 } else {
-                    // Tampilkan daftar destinasi
                     binding.tvEmptyMessage.visibility = View.GONE
                     binding.rvDestinations.visibility = View.VISIBLE
                     adapter.submitList(destinationDetails)

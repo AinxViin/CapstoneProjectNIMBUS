@@ -12,17 +12,13 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     fun login(email: String, password: String, onResult: (Boolean, String) -> Unit) {
         viewModelScope.launch {
             try {
-                // Langkah 1: Login
                 val loginRequest = LoginRequest(email, password)
                 val loginResponse = userRepository.login(loginRequest)
 
-                // Langkah 2: Fetch user data after login is successful
                 val userDetails = fetchUserDetails(password)
 
-                // Langkah 3: Save user session
                 userRepository.saveSession(userDetails)
 
-                // Notify success after session is saved
                 onResult(true, loginResponse.message)
             } catch (e: Exception) {
                 // Notify failure
@@ -35,7 +31,6 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
         return try {
             val response = userRepository.getUser()
 
-            // Construct user model from API response
             UserModel(
                 email = response.email ?: "",
                 name = response.nama ?: "",

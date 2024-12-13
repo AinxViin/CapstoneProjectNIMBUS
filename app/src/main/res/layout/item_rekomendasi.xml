@@ -13,7 +13,6 @@
         android:background="#ededed"
         android:orientation="vertical">
 
-        <!-- Image Section -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="208dp"
@@ -27,7 +26,6 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/placeholder" />
 
-            <!-- Bookmark Icon -->
             <LinearLayout
                 android:id="@+id/llRating"
                 android:layout_width="wrap_content"
@@ -37,7 +35,6 @@
                 android:background="@drawable/rounded_background"
                 android:orientation="horizontal"
                 android:padding="8dp">
-                <!-- Star ImageViews will be added dynamically here -->
             </LinearLayout>
         </FrameLayout>
 

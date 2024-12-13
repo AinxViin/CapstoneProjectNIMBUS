@@ -1,7 +1,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="@color/cream" />
-    <corners android:radius="12dp" /> <!-- Lekukan di setiap sudut -->
+    <corners android:radius="12dp" />
     <stroke
         android:width="2dp"
-        android:color="@color/green" /> <!-- Outline Hijau -->
+        android:color="@color/green" />
 </shape>

@@ -46,34 +46,30 @@ class AddedPlanFragment : Fragment() {
             ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.recycler_view_spacing))
         binding.rvPlan.addItemDecoration(itemDecoration)
 
-        // Tambahkan item click listener
         adapter.setOnItemClickListener { plan ->
             val action =
                 AddedPlanFragmentDirections.actionAddedPlanFragmentToDetailPlanFragment(plan.id)
             findNavController().navigate(action)
         }
 
-        // Tambahkan listener untuk Button Tambah Rencana
         binding.btnAddPlan.setOnClickListener {
             val bottomSheet = AddPlanFragment()
             bottomSheet.show(parentFragmentManager, "AddPlanBottomSheet")
         }
 
-        // Tambahkan listener untuk tombol delete
         adapter.setOnItemDeleteListener { planId ->
             deletePlan(planId)
         }
 
-        fetchPlans() // Panggil fungsi untuk mengambil data rencana
+        fetchPlans()
     }
 
     private fun fetchPlans() {
-        // Panggil API untuk mendapatkan daftar rencana
         lifecycleScope.launch {
             try {
                 val apiService =
                     ApiConfig.apiService(UserPreference.getInstance(requireContext().dataStore))
-                val plans = apiService.getPlans() // Ambil data rencana
+                val plans = apiService.getPlans()
                 showPlans(plans)
             } catch (e: Exception) {
                 Log.e("AddedPlanFragment", "Error fetching plans: ${e.message}")
@@ -98,8 +94,8 @@ class AddedPlanFragment : Fragment() {
 
                 if (response.isSuccessful) {
                     val updatedPlans =
-                        adapter.getPlans().filterNot { it.id == planId } // Gunakan getPlans()
-                    adapter.submitList(updatedPlans) // Memperbarui list
+                        adapter.getPlans().filterNot { it.id == planId }
+                    adapter.submitList(updatedPlans)
                     Log.d("AddedPlanFragment", "Plan berhasil dihapus")
                 } else {
                     Log.e("AddedPlanFragment", "Gagal menghapus plan")

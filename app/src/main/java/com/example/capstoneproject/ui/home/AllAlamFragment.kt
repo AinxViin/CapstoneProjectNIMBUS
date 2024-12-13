@@ -55,15 +55,12 @@ class AllAlamFragment : Fragment() {
             ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.recycler_view_spacing))
         binding.rvAllCategories.addItemDecoration(itemDecoration)
         binding.rvAllCategories.layoutManager = LinearLayoutManager(requireContext())
-        wisataAlamAdapter = WisataAlamAdapter(emptyList()) // Initial empty list
+        wisataAlamAdapter = WisataAlamAdapter(emptyList())
         binding.rvAllCategories.adapter = wisataAlamAdapter
 
-        // Set listener for item click
         wisataAlamAdapter.setOnItemClickListener { wisata ->
-            // Mengambil ID wisata yang dipilih
             val wisataId = wisata.id
 
-            // Menggunakan NavController untuk berpindah ke DetailWisataFragment dan mengirimkan ID
             val action =
                 AllAlamFragmentDirections.actionAllAlamFragmentToDetailWisataFragment(wisataId)
             findNavController().navigate(action)
@@ -73,12 +70,10 @@ class AllAlamFragment : Fragment() {
     private fun fetchWisataAlam() {
         lifecycleScope.launch {
             try {
-                // Menggunakan method suspend yang sudah ada di UserRepository
                 val wisataAlam = userRepository.getWisataAlam()
                 wisataAlamAdapter = WisataAlamAdapter(wisataAlam)
                 binding.rvAllCategories.adapter = wisataAlamAdapter
             } catch (e: Exception) {
-                // Handle error, misalnya dengan menampilkan Toast
                 e.printStackTrace() // Log error
             }
         }

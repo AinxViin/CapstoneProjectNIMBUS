@@ -12,16 +12,13 @@ class MainViewModel(private val userRepository: UserRepository) : ViewModel() {
     fun login(email: String, password: String, onResult: (Boolean, String) -> Unit) {
         viewModelScope.launch {
             try {
-                // Create LoginRequest object
                 val loginRequest = LoginRequest(email, password)
 
-                // Call login function from repository
                 val response = userRepository.login(loginRequest)
 
-                // Since the response now only has a message, we directly use it
                 val userModel = UserModel(
-                    email = email,  // Store the email in session
-                    token = "temporary_token",  // Temporary token or use another method if needed
+                    email = email,
+                    token = "temporary_token",
                     isLogin = true
                 )
                 userRepository.saveSession(userModel)

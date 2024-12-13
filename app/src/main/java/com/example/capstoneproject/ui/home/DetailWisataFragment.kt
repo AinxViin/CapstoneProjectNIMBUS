@@ -37,14 +37,10 @@ class DetailWisataFragment : Fragment() {
 
         (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
-        // Mengambil parameter wisataId dari argumen fragment
         val wisataId = arguments?.getInt("wisataId") ?: return
         val factory = Injection.provideDetailWisataViewModelFactory(requireContext())
-        // Menggunakan factory untuk mendapatkan ViewModel
         viewModel = ViewModelProvider(this, factory)[DetailWisataViewModel::class.java]
 
-
-        // Memanggil ViewModel untuk mengambil data wisata berdasarkan ID
         viewModel.fetchDetailWisata(wisataId)
 
         binding.btnAddToPlan.setOnClickListener {

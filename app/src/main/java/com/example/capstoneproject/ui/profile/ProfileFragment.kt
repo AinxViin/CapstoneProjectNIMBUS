@@ -86,7 +86,6 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setupUI() {
-        // Set dummy data atau load data dari preference/user session
         lifecycleScope.launch {
             userPreference.getSession().collect { user ->
                 binding.nameTextView.text = user.name
@@ -108,22 +107,18 @@ class ProfileFragment : Fragment() {
             pickImageLauncher.launch("image/*")
         }
 
-        // Navigasi ke halaman ganti nama
         binding.changeNameButton.setOnClickListener {
             findNavController().navigate(R.id.navigation_change_name)
         }
 
-        // Navigasi ke halaman ganti email
         binding.changeEmailButton.setOnClickListener {
             findNavController().navigate(R.id.navigation_change_email)
         }
 
-        // Navigasi ke halaman ganti password
         binding.changePasswordButton.setOnClickListener {
             findNavController().navigate(R.id.navigation_change_password)
         }
 
-        // Logout
         binding.logoutButton.setOnClickListener {
             logout()
         }

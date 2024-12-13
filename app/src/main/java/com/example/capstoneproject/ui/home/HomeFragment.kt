@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
         val factory = Injection.provideViewModelFactory(requireContext())
         viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
         viewModel.getProvinces()
-        viewModel.getWisata() // Panggil fungsi untuk mendapatkan data wisata
+        viewModel.getWisata()
     }
 
     private fun setupSeeAllClickListeners() {
@@ -112,19 +112,19 @@ class HomeFragment : Fragment() {
 
         // Observasi data wisata alam
         viewModel.wisataAlam.observe(viewLifecycleOwner) { wisataAlam ->
-            val limitedAlam = wisataAlam.take(6)  // Ambil hanya 6 item
+            val limitedAlam = wisataAlam.take(6)
             alamAdapter.submitList(limitedAlam)
         }
 
         // Observasi data seni dan budaya
         viewModel.wisataBudaya.observe(viewLifecycleOwner) { wisataBudaya ->
-            val limitedBudaya = wisataBudaya.take(6)  // Ambil hanya 6 item
+            val limitedBudaya = wisataBudaya.take(6)
             budayaAdapter.submitList(limitedBudaya)
         }
 
         // Observasi data wisata hiburan
         viewModel.wisataHiburan.observe(viewLifecycleOwner) { wisataHiburan ->
-            val limitedHiburan = wisataHiburan.take(6)  // Ambil hanya 6 item
+            val limitedHiburan = wisataHiburan.take(6)
             hiburanAdapter.submitList(limitedHiburan)
         }
 

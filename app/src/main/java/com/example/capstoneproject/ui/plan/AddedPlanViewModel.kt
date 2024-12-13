@@ -22,8 +22,8 @@ class AddedPlanViewModel(private val userRepository: UserRepository) : ViewModel
     }
 
     suspend fun getUserId(): Int {
-        val session = userRepository.getUserSession() // Mengambil sesi pengguna
-        return session?.id ?: 0 // Mengembalikan ID atau 0 jika tidak ditemukan
+        val session = userRepository.getUserSession()
+        return session?.id ?: 0
     }
 }
 
